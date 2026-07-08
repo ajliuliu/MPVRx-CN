@@ -404,7 +404,7 @@ object FolderListScreen : Screen {
                   onSearch = { },
                   expanded = false,
                   onExpandedChange = { },
-                  placeholder = { Text("Search folders and videos...") },
+                  placeholder = { Text("搜索文件夹和视频...") },
                   leadingIcon = {
                     Icon(
                       imageVector = Icons.Filled.Search,
@@ -627,8 +627,8 @@ object FolderListScreen : Screen {
                     // No results
                     EmptyState(
                       icon = Icons.Filled.Search,
-                      title = "No results found",
-                      message = "No folders or videos match your search query",
+                      title = "未找到结果",
+                      message = "没有匹配搜索的文件夹或视频",
                       modifier = Modifier.fillMaxSize(),
                     )
                   } else {

@@ -274,7 +274,7 @@ fun MoreSheet(
         
         if (isHighRes) {
             Text(
-                text = "Not available for 4K/8K video",
+                text = "4K/8K 视频不可用",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.padding(bottom = 4.dp)

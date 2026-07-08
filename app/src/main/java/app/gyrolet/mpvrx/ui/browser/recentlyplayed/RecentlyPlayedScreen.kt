@@ -188,7 +188,7 @@ object RecentlyPlayedScreen : Screen {
     Scaffold(
         topBar = {
           BrowserTopBar(
-            title = "Recently Played",
+            title = "最近播放",
             isInSelectionMode = selectionManager.isInSelectionMode,
             selectedCount = selectionManager.selectedCount,
             totalCount = recentItems.size,
@@ -222,7 +222,7 @@ object RecentlyPlayedScreen : Screen {
                   TooltipAnchorPosition.Above
                 }
               ),
-              tooltip = { PlainTooltip { Text("Toggle menu") } },
+              tooltip = { PlainTooltip { Text("切换菜单") } },
               state = rememberTooltipState(),
             ) {
               ToggleFloatingActionButton(
@@ -254,7 +254,7 @@ object RecentlyPlayedScreen : Screen {
               filePicker.launch(arrayOf("video/*"))
             },
             icon = { Icon(Icons.Filled.FileOpen, contentDescription = null) },
-            text = { Text(text = "Open File") },
+            text = { Text(text = "打开文件") },
           )
 
           FloatingActionButtonMenuItem(
@@ -274,7 +274,7 @@ object RecentlyPlayedScreen : Screen {
               }
             },
             icon = { Icon(Icons.Filled.History, contentDescription = null) },
-            text = { Text(text = "Recently Played") },
+            text = { Text(text = "最近播放") },
           )
 
           FloatingActionButtonMenuItem(
@@ -283,7 +283,7 @@ object RecentlyPlayedScreen : Screen {
               showLinkDialog.value = true
             },
             icon = { Icon(Icons.Filled.Link, contentDescription = null) },
-            text = { Text(text = "Open Link") },
+            text = { Text(text = "打开链接") },
           )
         }
       },
@@ -298,8 +298,8 @@ object RecentlyPlayedScreen : Screen {
           ) {
             EmptyState(
               icon = Icons.Filled.History,
-              title = "Recently Played is disabled",
-              message = "Enable it in Advanced Settings to track your playback history",
+              title = "最近播放已禁用",
+              message = "在高级设置中启用它以跟踪播放历史",
             )
           }
         }
@@ -327,8 +327,8 @@ object RecentlyPlayedScreen : Screen {
           ) {
             EmptyState(
               icon = Icons.Filled.History,
-              title = "No recently played videos",
-              message = "Videos you play will appear here",
+              title = "没有最近播放的视频",
+              message = "您播放的视频将显示在此处",
             )
           }
         }
@@ -345,7 +345,7 @@ object RecentlyPlayedScreen : Screen {
                   // Always play individual videos without creating a playlist.
                   MediaUtils.playFile(playableVideo, context, "recently_played")
                 } else {
-                  Toast.makeText(context, "Recent file no longer exists", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(context, "最近的文件已不存在", Toast.LENGTH_SHORT).show()
                 }
               }
             },

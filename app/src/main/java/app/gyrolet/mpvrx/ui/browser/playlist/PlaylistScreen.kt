@@ -218,7 +218,7 @@ object PlaylistScreen : Screen {
             }
           } else {
             BrowserTopBar(
-              title = "Playlists",
+              title = "播放列表",
               isInSelectionMode = selectionManager.isInSelectionMode,
               selectedCount = selectionManager.selectedCount,
               totalCount = playlistsWithCount.size,
@@ -245,7 +245,7 @@ object PlaylistScreen : Screen {
             ExtendedFloatingActionButton(
               onClick = { showPlaylistActionSheet = true },
               icon = { Icon(Icons.Filled.Add, contentDescription = null) },
-              text = { Text("Create Playlist") },
+              text = { Text("创建播放列表") },
               modifier = Modifier.padding(bottom = navigationBarHeight)
             )
           }
@@ -261,8 +261,8 @@ object PlaylistScreen : Screen {
           ) {
             EmptyState(
               icon = Icons.Filled.Search,
-              title = "No playlists found",
-              message = "Try a different search term",
+              title = "未找到播放列表",
+              message = "请尝试其他搜索词",
             )
           }
         } else if (playlistsWithCount.isEmpty() && hasCompletedInitialLoad) {
@@ -278,8 +278,8 @@ object PlaylistScreen : Screen {
             ) {
               EmptyState(
                 icon = Icons.Outlined.PlaylistAdd,
-                title = "No playlists yet",
-                message = "Create a playlist or add one from an m3u URL",
+                title = "暂无播放列表",
+                message = "创建播放列表或从 M3U URL 添加",
               )
             }
           }

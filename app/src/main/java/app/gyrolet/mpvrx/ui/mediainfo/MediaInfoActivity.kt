@@ -123,7 +123,7 @@ class MediaInfoActivity : ComponentActivity() {
     var error by remember { mutableStateOf<String?>(null) }
     var textContent by remember { mutableStateOf<String?>(null) }
     var fullMediaInfoText by remember { mutableStateOf<String?>(null) }
-    var fileName by remember { mutableStateOf("Media File") }
+    var fileName by remember { mutableStateOf("媒体文件") }
     var fileUri by remember { mutableStateOf<Uri?>(null) }
     var mediaInfo by remember { mutableStateOf<MediaInfoOps.MediaInfoData?>(null) }
 
@@ -146,7 +146,7 @@ class MediaInfoActivity : ComponentActivity() {
       }
 
       if (uri == null) {
-        error = "No media file provided"
+        error = "未提供媒体文件"
         isLoading = false
         return@LaunchedEffect
       }
@@ -184,11 +184,11 @@ class MediaInfoActivity : ComponentActivity() {
 
             isLoading = false
           }.onFailure { e ->
-            error = e.message ?: "Failed to load media information"
+            error = e.message ?: "加载媒体信息失败"
             isLoading = false
           }
         } catch (e: Exception) {
-          error = e.message ?: "Unknown error"
+          error = e.message ?: "未知错误"
           isLoading = false
         }
       }
@@ -200,7 +200,7 @@ class MediaInfoActivity : ComponentActivity() {
           title = {
             Column {
               Text(
-                text = "Media Info",
+                text = "媒体信息",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
               )
@@ -296,7 +296,7 @@ class MediaInfoActivity : ComponentActivity() {
           modifier = Modifier.size(48.dp),
         )
         Text(
-          text = "Analyzing media file...",
+          text = "分析媒体文件中...",
           style = MaterialTheme.typography.bodyLarge,
           fontWeight = FontWeight.Medium,
           color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -320,7 +320,7 @@ class MediaInfoActivity : ComponentActivity() {
         shape = MaterialTheme.shapes.extraLarge,
       ) {
         Text(
-          text = "Error: $errorMessage",
+          text = "错误: $errorMessage",
           style = MaterialTheme.typography.bodyLarge,
           fontWeight = FontWeight.Medium,
           color = MaterialTheme.colorScheme.onErrorContainer,
@@ -678,14 +678,14 @@ class MediaInfoActivity : ComponentActivity() {
           horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
           QuickStatCard(
-            title = "Resolution",
+            title = "分辨率",
             value = resolutionLabel,
             icon = Icons.Default.Videocam,
             accentColor = MaterialTheme.colorScheme.primary,
             modifier = Modifier.weight(1f)
           )
           QuickStatCard(
-            title = "File Size",
+            title = "文件大小",
             value = sizeLabel,
             icon = Icons.Default.SdCard,
             accentColor = MaterialTheme.colorScheme.secondary,
@@ -697,15 +697,15 @@ class MediaInfoActivity : ComponentActivity() {
           horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
           QuickStatCard(
-            title = "Duration",
+            title = "时长",
             value = durationLabel,
             icon = Icons.Outlined.Timer,
             accentColor = MaterialTheme.colorScheme.tertiary,
             modifier = Modifier.weight(1f)
           )
           QuickStatCard(
-            title = "Bitrate",
-            value = mediaInfo.general.overallBitRate.ifBlank { "Unknown" },
+            title = "比特率",
+            value = mediaInfo.general.overallBitRate.ifBlank { "未知" },
             icon = Icons.Default.Speed,
             accentColor = Color(0xFFFFB300),
             modifier = Modifier.weight(1f)
@@ -722,7 +722,7 @@ class MediaInfoActivity : ComponentActivity() {
           verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
           Text(
-            text = "Media Tracks Summary",
+            text = "媒体轨道摘要",
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.primary
           )
@@ -731,11 +731,11 @@ class MediaInfoActivity : ComponentActivity() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceAround
           ) {
-            TrackSummaryItem(videoCount, "Video", Icons.Default.Videocam, MaterialTheme.colorScheme.primary)
-            TrackSummaryItem(audioCount, "Audio", Icons.Default.VolumeUp, MaterialTheme.colorScheme.secondary)
-            TrackSummaryItem(subtitleCount, "Subtitle", Icons.Default.Subtitles, MaterialTheme.colorScheme.tertiary)
+            TrackSummaryItem(videoCount, "视频", Icons.Default.Videocam, MaterialTheme.colorScheme.primary)
+            TrackSummaryItem(audioCount, "音频", Icons.Default.VolumeUp, MaterialTheme.colorScheme.secondary)
+            TrackSummaryItem(subtitleCount, "字幕", Icons.Default.Subtitles, MaterialTheme.colorScheme.tertiary)
             if (chapterCount > 0) {
-              TrackSummaryItem(chapterCount, "Chapters", Icons.Default.ViewList, Color(0xFFFFB300))
+              TrackSummaryItem(chapterCount, "章节", Icons.Default.ViewList, Color(0xFFFFB300))
             }
           }
         }
@@ -752,7 +752,7 @@ class MediaInfoActivity : ComponentActivity() {
             verticalArrangement = Arrangement.spacedBy(12.dp)
           ) {
             Text(
-              text = "Container Metadata",
+              text = "容器元数据",
               style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
               color = MaterialTheme.colorScheme.primary
             )
@@ -870,7 +870,7 @@ class MediaInfoActivity : ComponentActivity() {
                 scope.launch {
                   val content = properties.joinToString("\n") { "${it.first}: ${it.second}" }
                   SafeClipboard.copyPlainText(context, title, content)
-                  Toast.makeText(context, "Copied specifications to clipboard", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(context, "已复制媒体信息到剪贴板", Toast.LENGTH_SHORT).show()
                 }
               },
             contentAlignment = Alignment.Center,
@@ -1024,7 +1024,7 @@ class MediaInfoActivity : ComponentActivity() {
           verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
           Text(
-            text = "Video Chapters & Timeline",
+            text = "视频章节与时间轴",
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.primary
           )
@@ -1047,7 +1047,7 @@ class MediaInfoActivity : ComponentActivity() {
                   if (s.matches(Regex("^[a-z]{2,3}:.*"))) s.replaceFirst(langTagRegex, "").trimStart()
                   else s
                 }
-                .ifBlank { "Chapter ${index + 1}" }
+                .ifBlank { "章节 ${index + 1}" }
 
               Row(
                 modifier = Modifier
@@ -1056,7 +1056,7 @@ class MediaInfoActivity : ComponentActivity() {
                   .clickable {
                     scope.launch {
                       SafeClipboard.copyPlainText(context, "Chapter timestamp", timestamp)
-                      Toast.makeText(context, "Copied: $timestamp", Toast.LENGTH_SHORT).show()
+                      Toast.makeText(context, "已复制: $timestamp", Toast.LENGTH_SHORT).show()
                     }
                   }
                   .padding(vertical = 6.dp),

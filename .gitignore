@@ -28,6 +28,9 @@ app/debug/
 
 # Generated files
 bin/
+
+# 附属内容
+附属内容/
 gen/
 out/
 

@@ -211,7 +211,7 @@ object AboutScreen : Screen {
                     color = cs.primary.copy(alpha = 0.16f),
                   ) {
                     Text(
-                      text = "By Ritesh Pandit",
+                      text = "作者 Ritesh Pandit",
                       modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp),
                       style = MaterialTheme.typography.titleSmall,
                       fontWeight = FontWeight.SemiBold,
@@ -293,13 +293,13 @@ object AboutScreen : Screen {
                 ) {
                   Icon(
                     imageVector = Icons.Filled.Info,
-                    contentDescription = "Device Info",
+                    contentDescription = "设备信息",
                     modifier = Modifier.size(20.dp),
                     tint = cs.onPrimaryContainer,
                   )
                   Spacer(modifier = Modifier.width(8.dp))
                   Text(
-                    text = "Device Info",
+                    text = "设备信息",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold,
                     color = cs.onPrimaryContainer,
@@ -318,7 +318,7 @@ object AboutScreen : Screen {
         Spacer(Modifier.height(8.dp))
 
         // Support / Donation Section
-        PreferenceSectionHeader(title = "Support")
+        PreferenceSectionHeader(title = "支持")
         PreferenceCard {
             Column(modifier = Modifier.padding(16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -338,7 +338,7 @@ object AboutScreen : Screen {
                 }
                 Spacer(Modifier.height(10.dp))
                 Text(
-                    text = "If you enjoy MpvRx, consider supporting its development. Every bit helps!",
+                    text = "如果你喜欢 MpvRx，可以考虑支持它的开发。每一点帮助都很重要！",
                     style = MaterialTheme.typography.bodyMedium,
                     color = cs.onSurfaceVariant,
                 )
@@ -358,7 +358,7 @@ object AboutScreen : Screen {
                                     text = "panditritesh2001@okhdfcbank",
                                     showToast = false,
                                 )
-                                Toast.makeText(context, "UPI ID copied!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "UPI ID 已复制！", Toast.LENGTH_SHORT).show()
                             }
                             .padding(horizontal = 16.dp, vertical = 14.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -380,7 +380,7 @@ object AboutScreen : Screen {
                         }
                         Icon(
                             imageVector = Icons.Default.ContentCopy,
-                            contentDescription = "Copy UPI ID",
+                            contentDescription = "复制 UPI ID",
                             modifier = Modifier.size(20.dp),
                             tint = cs.primary,
                         )
@@ -396,7 +396,7 @@ object AboutScreen : Screen {
                             )
                             context.startActivity(upiIntent)
                         } catch (_: Exception) {
-                            Toast.makeText(context, "No UPI app found", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "未找到 UPI 应用", Toast.LENGTH_SHORT).show()
                         }
                     },
                     modifier = Modifier.fillMaxWidth().height(50.dp),
@@ -409,7 +409,7 @@ object AboutScreen : Screen {
                 ) {
                     Icon(Icons.Filled.MonetizationOn, null, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text("Send Love", fontWeight = FontWeight.SemiBold)
+                    Text("支持作者", fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -418,7 +418,7 @@ object AboutScreen : Screen {
 
         // Updates Section (only show if update feature is enabled)
         if (BuildConfig.ENABLE_UPDATE_FEATURE && updateViewModel != null) {
-          PreferenceSectionHeader(title = "Updates")
+          PreferenceSectionHeader(title = "更新")
           PreferenceCard {
                 val isAutoUpdateEnabled by updateViewModel.isAutoUpdateEnabled.collectAsState()
                 Column {
@@ -434,14 +434,14 @@ object AboutScreen : Screen {
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "Auto Check for Updates",
+                                text = "自动检查更新",
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold,
                                 color = cs.onSurface
                             )
                             Spacer(modifier = Modifier.height(2.dp))
                             Text(
-                                text = "Check on startup",
+                                text = "启动时检查",
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = cs.outline
                             )

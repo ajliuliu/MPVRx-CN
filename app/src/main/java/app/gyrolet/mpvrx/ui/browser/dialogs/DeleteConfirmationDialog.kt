@@ -57,7 +57,7 @@ fun DeleteConfirmationDialog(
           modifier = Modifier.size(28.dp),
         )
         Text(
-          text = "Delete $itemCount $itemText?",
+          text = "删除 $itemCount 个$itemText?",
           style = MaterialTheme.typography.headlineSmall,
           fontWeight = FontWeight.Bold,
           color = MaterialTheme.colorScheme.onSurface,
@@ -156,7 +156,7 @@ fun DeleteConfirmationDialog(
         )
         Spacer(modifier = Modifier.width(6.dp))
         Text(
-          text = "Delete",
+          text = "删除",
           fontWeight = FontWeight.Bold,
         )
       }

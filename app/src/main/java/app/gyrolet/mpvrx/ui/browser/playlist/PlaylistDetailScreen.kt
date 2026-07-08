@@ -417,7 +417,7 @@ data class PlaylistDetailScreen(val playlistId: Int) : Screen {
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                          text = "Play",
+                          text = "播放",
                           style = MaterialTheme.typography.labelLarge,
                           fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
                         )
@@ -451,12 +451,12 @@ data class PlaylistDetailScreen(val playlistId: Int) : Screen {
               tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Text(
-              text = "No videos found",
+              text = "未找到视频",
               style = MaterialTheme.typography.titleMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
             Text(
-              text = "Try a different search term",
+              text = "请尝试其他搜索词",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -477,10 +477,10 @@ data class PlaylistDetailScreen(val playlistId: Int) : Screen {
               val result = viewModel.refreshM3UPlaylist()
               result
                 .onSuccess {
-                  Toast.makeText(context, "Playlist refreshed successfully", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(context, "播放列表刷新成功", Toast.LENGTH_SHORT).show()
                 }
                 .onFailure { error ->
-                  Toast.makeText(context, "Failed to refresh: ${error.message}", Toast.LENGTH_LONG).show()
+                  Toast.makeText(context, "刷新失败: ${error.message}", Toast.LENGTH_LONG).show()
                 }
             } else {
               viewModel.refreshNow()
@@ -900,7 +900,7 @@ private fun RemoveFromPlaylistDialog(
     onDismissRequest = onDismiss,
     title = {
       Text(
-        text = "Remove $itemCount $itemText from playlist?",
+        text = "从播放列表中移除 $itemCount 个$itemText?",
         style = MaterialTheme.typography.headlineMedium,
         fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
       )
@@ -917,7 +917,7 @@ private fun RemoveFromPlaylistDialog(
           shape = MaterialTheme.shapes.extraLarge,
         ) {
           Text(
-            text = "The selected $itemText will be removed from this playlist. The original ${if (itemCount == 1) "file" else "files"} will not be deleted.",
+            text = "所选的$itemText 将从播放列表中移除。原始${if (itemCount == 1) "文件" else "文件"}不会被删除。",
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = androidx.compose.ui.text.font.FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -940,7 +940,7 @@ private fun RemoveFromPlaylistDialog(
         shape = MaterialTheme.shapes.extraLarge,
       ) {
         Text(
-          text = "Remove from Playlist",
+          text = "从播放列表中移除",
           fontWeight = androidx.compose.ui.text.font.FontWeight.Bold,
         )
       }

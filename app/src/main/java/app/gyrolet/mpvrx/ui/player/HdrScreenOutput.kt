@@ -22,9 +22,9 @@ enum class HdrScreenMode(
   val hdrToysProfile: HdrToysProfile? = null,
 ) {
   OFF(
-    title = "Off",
-    shortTitle = "Off",
-    description = "Normal SDR output",
+    title = "关闭",
+    shortTitle = "关闭",
+    description = "普通 SDR 输出",
   ),
   BT_2100_PQ(
     title = "BT.2100 PQ",
@@ -45,9 +45,9 @@ enum class HdrScreenMode(
     hdrToysProfile = HdrToysProfile.BT_2020,
   ),
   LINEAR(
-    title = "Linear HDR",
-    shortTitle = "Linear",
-    description = "High-quality mpv HDR output without hdr-toys shaders",
+    title = "线性 HDR",
+    shortTitle = "线性",
+    description = "高质量 mpv HDR 输出，不使用 hdr-toys 着色器",
   );
 
   companion object {

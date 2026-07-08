@@ -101,7 +101,7 @@ fun SortDialog(
             .verticalScroll(rememberScrollState()),
         ) {
           if (showSortOptions) {
-            DialogSectionTitle(text = "Sort by")
+            DialogSectionTitle(text = "排序方式")
             SortTypeSelector(
               sortType = sortType,
               onSortTypeChange = onSortTypeChange,
@@ -208,7 +208,7 @@ fun SortDialog(
                 verticalAlignment = Alignment.CenterVertically
               ) {
                 Text(
-                  text = "Fields",
+                  text = "字段",
                   style = MaterialTheme.typography.titleSmall,
                 )
                 Icon(

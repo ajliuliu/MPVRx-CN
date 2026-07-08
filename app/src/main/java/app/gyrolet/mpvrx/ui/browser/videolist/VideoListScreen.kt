@@ -550,7 +550,7 @@ data class VideoListScreen(
       // Private Space Loading Dialog
       LoadingDialog(
         isOpen = movingToPrivateSpace.value,
-        message = "Moving to private space...",
+        message = "正在移动到私密空间...",
       )
 
       // Private Space Completion Dialog
@@ -559,7 +559,7 @@ data class VideoListScreen(
           onDismissRequest = { showPrivateSpaceCompletionDialog.value = false },
           title = {
             Text(
-              text = "Moved to Private Space",
+              text = "已移动到私密空间",
               style = MaterialTheme.typography.headlineSmall,
             )
           },
@@ -696,8 +696,8 @@ internal fun VideoListContent(
       ) {
         EmptyState(
           icon = Icons.Filled.VideoLibrary,
-          title = "No videos in this folder",
-          message = "Videos you add to this folder will appear here",
+          title = "此文件夹中没有视频",
+          message = "添加到此文件夹的视频将显示在此处",
         )
       }
     }

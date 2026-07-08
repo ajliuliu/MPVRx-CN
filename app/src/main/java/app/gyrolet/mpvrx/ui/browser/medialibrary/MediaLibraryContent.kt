@@ -297,7 +297,7 @@ fun MediaLibraryContent() {
         ) { }
       } else {
         BrowserTopBar(
-          title = "Media Library",
+          title = "媒体库",
           isInSelectionMode = selectionManager.isInSelectionMode,
           selectedCount = selectionManager.selectedCount,
           totalCount = filteredVideosWithInfo.size,
@@ -345,7 +345,7 @@ fun MediaLibraryContent() {
       if (filteredVideosWithInfo.isNotEmpty()) {
         TooltipBox(
           positionProvider = TooltipDefaults.rememberTooltipPositionProvider(TooltipAnchorPosition.Above),
-          tooltip = { PlainTooltip { Text("Play recently played or first video") } },
+          tooltip = { PlainTooltip { Text("播放最近播放或第一个视频") } },
           state = rememberTooltipState(),
         ) {
           FloatingActionButton(
@@ -371,7 +371,7 @@ fun MediaLibraryContent() {
               }
             },
           ) {
-            Icon(Icons.Filled.PlayArrow, contentDescription = "Play recently played or first video")
+            Icon(Icons.Filled.PlayArrow, contentDescription = "播放最近播放或第一个视频")
           }
         }
       }
@@ -390,8 +390,8 @@ fun MediaLibraryContent() {
         ) {
           EmptyState(
             icon = Icons.Filled.Search,
-            title = "No videos found",
-            message = "Try a different search term",
+            title = "未找到视频",
+            message = "请尝试其他搜索词",
           )
         }
       } else {

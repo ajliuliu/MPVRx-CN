@@ -143,19 +143,19 @@ object MainScreen : Screen {
           NavigationBarItem(
             icon = {
               when (tab) {
-                MainTab.HOME -> Icon(Icons.Filled.Home, contentDescription = "Home")
-                MainTab.RECENTS -> Icon(Icons.Filled.History, contentDescription = "Recents")
-                MainTab.PLAYLISTS -> Icon(Icons.Filled.PlaylistPlay, contentDescription = "Playlists")
-                MainTab.NETWORK -> Icon(Icons.Filled.BringYourOwnIp, contentDescription = "Network")
+                MainTab.HOME -> Icon(Icons.Filled.Home, contentDescription = "主页")
+                MainTab.RECENTS -> Icon(Icons.Filled.History, contentDescription = "最近")
+                MainTab.PLAYLISTS -> Icon(Icons.Filled.PlaylistPlay, contentDescription = "播放列表")
+                MainTab.NETWORK -> Icon(Icons.Filled.BringYourOwnIp, contentDescription = "网络")
               }
             },
             label = {
               Text(
                 when (tab) {
-                  MainTab.HOME -> "Home"
-                  MainTab.RECENTS -> "Recents"
-                  MainTab.PLAYLISTS -> "Playlists"
-                  MainTab.NETWORK -> "Network"
+                  MainTab.HOME -> "主页"
+                  MainTab.RECENTS -> "最近"
+                  MainTab.PLAYLISTS -> "播放列表"
+                  MainTab.NETWORK -> "网络"
                 }
               )
             },

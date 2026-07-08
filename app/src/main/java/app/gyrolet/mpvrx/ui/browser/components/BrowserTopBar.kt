@@ -246,7 +246,7 @@ private fun NormalTopBar(
         ) {
           Icon(
             Icons.Filled.Search,
-            contentDescription = "Search",
+            contentDescription = "搜索",
             modifier = Modifier.size(24.dp),
             tint = MaterialTheme.colorScheme.secondary,
           )
@@ -272,7 +272,7 @@ private fun NormalTopBar(
         ) {
           Icon(
             Icons.Filled.Settings,
-            contentDescription = "Settings",
+            contentDescription = "设置",
             modifier = Modifier.size(24.dp),
             tint = MaterialTheme.colorScheme.secondary,
           )
@@ -393,7 +393,7 @@ private fun SelectionTopBar(
         ) {
           Icon(
             Icons.Filled.PlayArrow,
-            contentDescription = "Play",
+            contentDescription = "播放",
             modifier = Modifier.size(28.dp),
             tint = MaterialTheme.colorScheme.primary,
           )
@@ -407,7 +407,7 @@ private fun SelectionTopBar(
         ) {
           Icon(
             Icons.Filled.PushPin,
-            contentDescription = "Pin folders",
+            contentDescription = "固定文件夹",
             modifier = Modifier.size(24.dp),
             tint = MaterialTheme.colorScheme.secondary,
           )
@@ -422,7 +422,7 @@ private fun SelectionTopBar(
         ) {
           Icon(
             Icons.Filled.PlaylistAdd,
-            contentDescription = "Add to Playlist",
+            contentDescription = "添加到播放列表",
             modifier = Modifier.size(28.dp),
             tint = MaterialTheme.colorScheme.secondary,
           )
@@ -493,7 +493,7 @@ private fun SelectionTopBar(
         ) {
           Icon(
             Icons.Filled.ContentCopy,
-            contentDescription = "Copy path",
+            contentDescription = "复制路径",
             modifier = Modifier.size(24.dp),
             tint = MaterialTheme.colorScheme.secondary,
           )

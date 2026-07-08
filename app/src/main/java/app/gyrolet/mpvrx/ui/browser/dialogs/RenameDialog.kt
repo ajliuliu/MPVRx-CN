@@ -90,7 +90,7 @@ fun RenameDialog(
     onDismissRequest = onDismiss,
     title = {
       Text(
-        text = "Rename $itemType",
+        text = "重命名$itemType",
         style = MaterialTheme.typography.headlineMedium,
         fontWeight = FontWeight.Bold,
       )

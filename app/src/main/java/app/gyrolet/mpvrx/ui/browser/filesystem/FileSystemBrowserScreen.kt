@@ -1249,7 +1249,7 @@ private fun FileSystemBrowserContent(
       ) {
         EmptyState(
           icon = Icons.Filled.Folder,
-          title = "Error loading directory",
+          title = "加载目录失败",
           message = error,
         )
       }
@@ -1262,8 +1262,8 @@ private fun FileSystemBrowserContent(
       ) {
         EmptyState(
           icon = Icons.Filled.FolderOpen,
-          title = "Empty folder",
-          message = "This folder contains no videos or subfolders",
+          title = "空文件夹",
+          message = "此文件夹中没有视频或子文件夹",
         )
       }
     }
@@ -1660,8 +1660,8 @@ private fun FileSystemSearchContent(
         ) {
           EmptyState(
             icon = Icons.Filled.Search,
-            title = "No results found",
-            message = "No files or folders match \"$searchQuery\"",
+            title = "未找到结果",
+            message = "没有匹配 \"$searchQuery\" 的文件或文件夹",
           )
         }
       }

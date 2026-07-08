@@ -182,17 +182,17 @@ fun AmbientSheet(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 ExpressivePresetButton(
-                    label = "Fast",
+                    label = "快速",
                     selected = isFast,
                     onClick = { viewModel.applyAmbientProfileFast() },
                 )
                 ExpressivePresetButton(
-                    label = "Balanced",
+                    label = "均衡",
                     selected = isBalanced,
                     onClick = { viewModel.applyAmbientProfileBalanced() },
                 )
                 ExpressivePresetButton(
-                    label = "HQ",
+                    label = "高画质",
                     selected = isHQ,
                     onClick = { viewModel.applyAmbientProfileHighQuality() },
                 )
