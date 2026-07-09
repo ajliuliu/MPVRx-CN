@@ -23,6 +23,7 @@ fun FolderSortDialog(
   sortOrder: SortOrder,
   onSortTypeChange: (FolderSortType) -> Unit,
   onSortOrderChange: (SortOrder) -> Unit,
+  isDualPane: Boolean = false,
 ) {
   val browserPreferences = koinInject<BrowserPreferences>()
   val appearancePreferences = koinInject<AppearancePreferences>()
@@ -248,6 +249,7 @@ fun VideoSortDialog(
   sortOrder: SortOrder,
   onSortTypeChange: (VideoSortType) -> Unit,
   onSortOrderChange: (SortOrder) -> Unit,
+  isDualPane: Boolean = false,
 ) {
   val browserPreferences = koinInject<BrowserPreferences>()
   val appearancePreferences = koinInject<AppearancePreferences>()
@@ -281,11 +283,16 @@ fun VideoSortDialog(
   val screenWidthDp = configuration.screenWidthDp.dp
   val contentHorizontalPadding = 8.dp
   val itemSpacing = 2.dp
-  val usableWidth = screenWidthDp - (contentHorizontalPadding * 2) - itemSpacing
+  val folderPaneWidth = if (isDualPane) screenWidthDp * 0.4f else screenWidthDp
+  val videoPaneWidth = if (isDualPane) screenWidthDp * 0.6f else screenWidthDp
+
+  val usableFolderWidth = folderPaneWidth - (contentHorizontalPadding * 2) - itemSpacing
+  val usableVideoWidth = videoPaneWidth - (contentHorizontalPadding * 2) - itemSpacing
+
   val folderMinWidth = 100.dp
   val videoMinWidth = 130.dp
-  val dynamicFolderColumns = (usableWidth / folderMinWidth).toInt().coerceIn(1, maxColumns)
-  val dynamicVideoColumns = (usableWidth / videoMinWidth).toInt().coerceIn(1, maxColumns)
+  val dynamicFolderColumns = (usableFolderWidth / folderMinWidth).toInt().coerceIn(1, maxColumns)
+  val dynamicVideoColumns = (usableVideoWidth / videoMinWidth).toInt().coerceIn(1, maxColumns)
 
   val folderGridColumnSelector = if (mediaLayoutMode == MediaLayoutMode.GRID && manualGridColumnsEnabled) {
     GridColumnSelector(
