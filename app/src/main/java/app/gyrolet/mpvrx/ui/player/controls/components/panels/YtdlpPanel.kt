@@ -67,7 +67,7 @@ fun YtdlpPanel(
           .padding(top = MaterialTheme.spacing.small, bottom = MaterialTheme.spacing.extraSmall),
       ) {
         Text(
-          text = "yt-dlp Manager",
+          text = "yt-dlp 管理器",
           style = MaterialTheme.typography.titleLarge,
           fontWeight = FontWeight.Bold
         )
@@ -107,7 +107,7 @@ fun YtdlpPanel(
                      else MaterialTheme.colorScheme.onErrorContainer,
             )
             Text(
-              text = if (hasYtdlp) "yt-dlp core is installed & active" else "yt-dlp core not installed",
+              text = if (hasYtdlp) "yt-dlp 核心已安装且活跃" else "yt-dlp 核心未安装",
               style = MaterialTheme.typography.bodyMedium,
               fontWeight = FontWeight.Bold,
               color = if (hasYtdlp) MaterialTheme.colorScheme.onPrimaryContainer
@@ -132,7 +132,7 @@ fun YtdlpPanel(
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
           ) {
             Text(
-              text = "Quick Quality Selection",
+              text = "快速画质选择",
               style = MaterialTheme.typography.bodyMedium,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -143,7 +143,7 @@ fun YtdlpPanel(
               horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
               modifier = Modifier.fillMaxWidth()
             ) {
-              val quickQualities = listOf(-1 to "Any", 1080 to "1080p", 720 to "720p", 480 to "480p")
+              val quickQualities = listOf(-1 to "不限", 1080 to "1080p", 720 to "720p", 480 to "480p")
               FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
@@ -195,7 +195,7 @@ fun YtdlpPanel(
             verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.extraSmall),
           ) {
             Text(
-              text = "Codec Preset",
+              text = "编码预设",
               style = MaterialTheme.typography.bodyMedium,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -245,7 +245,7 @@ fun YtdlpPanel(
             verticalArrangement = Arrangement.spacedBy(10.dp),
           ) {
             Text(
-              text = "Quick Subtitle Config",
+              text = "快速字幕配置",
               style = MaterialTheme.typography.bodyMedium,
               fontWeight = FontWeight.Bold,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -259,8 +259,8 @@ fun YtdlpPanel(
               horizontalArrangement = Arrangement.SpaceBetween
             ) {
               Column(modifier = Modifier.weight(1f)) {
-                Text("Download Subtitles", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
-                Text("Fetch subs from stream sources", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("下载字幕", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+                Text("从流媒体源获取字幕", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
               }
               Switch(
                 checked = writeSubs,
@@ -277,7 +277,7 @@ fun YtdlpPanel(
               horizontalArrangement = Arrangement.SpaceBetween
             ) {
               Column(modifier = Modifier.weight(1f)) {
-                Text("Auto-Generated Captions", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
+                Text("自动生成的字幕", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Medium)
                 Text("Include auto-captions/transcripts", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
               }
               Switch(

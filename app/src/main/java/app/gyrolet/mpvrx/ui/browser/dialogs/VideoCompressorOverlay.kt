@@ -255,9 +255,9 @@ fun VideoCompressorOverlay(
 
           CompressorScreenState.ERROR -> {
             CompressorIssueSurface(
-              title = "压缩ession failed",
-              message = state.error ?: "Unknown error",
-              actionLabel = "Try again",
+              title = "压缩失败",
+              message = state.error ?: "未知错误",
+              actionLabel = "重试",
               onClose = ::closeOverlay,
               onAction = {
                 viewModel.resetSession()

@@ -238,11 +238,10 @@ object PlayerPreferencesScreen : Screen {
                     android.util.Log.e("PlayerPreferencesScreen", "Failed to set alias state", e)
                   }
                 },
-                title = { Text("Show Media Info in chooser") },
+                title = { Text("在文件选择器中显示媒体信息") },
                 summary = {
                   Text(
-                    "Show Media Info in system \"Open with\" / " +
-                    "sharing menus to analyze files from other apps.",
+                    "在系统\"打开方式\"/分享菜单中显示媒体信息，用于分析来自其他应用的文件。",
                     color = MaterialTheme.colorScheme.outline,
                   )
                 },
@@ -589,7 +588,7 @@ object PlayerPreferencesScreen : Screen {
                 onValueChange = preferences.screenshotFormat::set,
                 values = ScreenshotFormat.entries,
                 valueToText = { AnnotatedString(it.title) },
-                title = { Text("Image format") },
+                title = { Text("图片格式") },
                 summary = { Text("${screenshotFormat.title} .${screenshotFormat.extension}", color = MaterialTheme.colorScheme.outline) },
               )
 
@@ -599,14 +598,14 @@ object PlayerPreferencesScreen : Screen {
               SwitchPreference(
                 value = includeSubtitles,
                 onValueChange = preferences.includeSubtitlesInSnapshot::set,
-                title = { Text("Include subtitles in screenshots") },
+                title = { Text("截图中包含字幕") },
               )
 
               PreferenceDivider()
 
               val screenshotTemplate by preferences.screenshotTemplate.collectAsState()
               Preference(
-                title = { Text("Filename template") },
+                title = { Text("文件名模板") },
                 summary = { Text(screenshotTemplate, color = MaterialTheme.colorScheme.outline) },
                 onClick = {
                   templateDraft = screenshotTemplate
@@ -620,7 +619,7 @@ object PlayerPreferencesScreen : Screen {
               SliderPreference(
                 value = screenshotQuality.toFloat(),
                 onValueChange = { preferences.screenshotQuality.set(it.roundToInt().coerceIn(1, 100)) },
-                title = { Text("JPEG/WebP quality") },
+                title = { Text("JPEG/WebP 质量") },
                 valueRange = 1f..100f,
                 summary = { Text("$screenshotQuality", color = MaterialTheme.colorScheme.outline) },
                 onSliderValueChange = { preferences.screenshotQuality.set(it.roundToInt().coerceIn(1, 100)) },
@@ -633,7 +632,7 @@ object PlayerPreferencesScreen : Screen {
               SliderPreference(
                 value = pngCompression.toFloat(),
                 onValueChange = { preferences.screenshotPngCompression.set(it.roundToInt().coerceIn(0, 9)) },
-                title = { Text("PNG compression") },
+                title = { Text("PNG 压缩") },
                 valueRange = 0f..9f,
                 summary = { Text("$pngCompression", color = MaterialTheme.colorScheme.outline) },
                 onSliderValueChange = { preferences.screenshotPngCompression.set(it.roundToInt().coerceIn(0, 9)) },
@@ -647,8 +646,8 @@ object PlayerPreferencesScreen : Screen {
                 SwitchPreference(
                   value = webpLossless,
                   onValueChange = preferences.screenshotWebpLossless::set,
-                  title = { Text("WebP lossless") },
-                  summary = { Text("Uses mpv native lossless output; Android fallback uses lossless on Android 11+.", color = MaterialTheme.colorScheme.outline) },
+                  title = { Text("WebP 无损") },
+                  summary = { Text("使用 mpv 原生无损输出；Android 备用方案在 Android 11+ 上使用无损输出。", color = MaterialTheme.colorScheme.outline) },
                 )
               }
             }
@@ -783,22 +782,22 @@ object PlayerPreferencesScreen : Screen {
     if (showTemplateDialog) {
       AlertDialog(
         onDismissRequest = { showTemplateDialog = false },
-        title = { Text("Filename template") },
+        title = { Text("文件名模板") },
         text = {
           Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedTextField(
               value = templateDraft,
               onValueChange = { templateDraft = it },
-              label = { Text("Template") },
+              label = { Text("模板") },
               modifier = Modifier.fillMaxWidth()
             )
             Text(
-              text = "Use placeholders to customize the screenshot filename:\n" +
-                  "• %f — Video title or filename\n" +
-                  "• %p — Playback position (seconds)\n" +
-                  "• %Y, %m, %d — Year, Month, Day\n" +
-                  "• %H, %M, %S — Hour, Minute, Second\n" +
-                  "• %wH, %wM, %wS, %wT — Wall-clock time (hour, min, sec, ms)",
+              text = "使用占位符自定义截图文件名：\n" +
+                  "• %f — 视频标题或文件名\n" +
+                  "• %p — 播放位置（秒）\n" +
+                  "• %Y, %m, %d — 年、月、日\n" +
+                  "• %H, %M, %S — 时、分、秒\n" +
+                  "• %wH, %wM, %wS, %wT — 挂钟时间（时、分、秒、毫秒）",
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -811,12 +810,12 @@ object PlayerPreferencesScreen : Screen {
               showTemplateDialog = false
             },
           ) {
-            Text("Save")
+            Text("保存")
           }
         },
         dismissButton = {
           TextButton(onClick = { showTemplateDialog = false }) {
-            Text("Cancel")
+            Text("取消")
           }
         },
       )

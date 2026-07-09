@@ -26,9 +26,9 @@ enum class IntroSegmentProvider(
 enum class PlayerClockFormat(
   val displayName: String,
 ) {
-  SYSTEM("System"),
-  TWELVE_HOUR("12 hour"),
-  TWENTY_FOUR_HOUR("24 hour"),
+  SYSTEM("跟随系统"),
+  TWELVE_HOUR("12 小时制"),
+  TWENTY_FOUR_HOUR("24 小时制"),
 }
 
 class PlayerPreferences(

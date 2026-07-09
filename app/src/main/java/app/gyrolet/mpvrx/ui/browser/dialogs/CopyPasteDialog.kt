@@ -42,8 +42,8 @@ fun FileOperationProgressDialog(
 
   val operationName =
     when (operationType) {
-      is CopyPasteOps.OperationType.Copy -> "Copying"
-      is CopyPasteOps.OperationType.Move -> "Moving"
+      is CopyPasteOps.OperationType.Copy -> "复制中"
+      is CopyPasteOps.OperationType.Move -> "移动中"
     }
 
   val isOperationComplete = progress.isComplete || progress.isCancelled || progress.error != null
@@ -56,7 +56,7 @@ fun FileOperationProgressDialog(
     },
     title = {
       Text(
-        text = "$operationName files",
+        text = "正在${operationName}文件",
         style = MaterialTheme.typography.headlineMedium,
         fontWeight = FontWeight.Bold,
       )
@@ -97,7 +97,7 @@ fun FileOperationProgressDialog(
             // Current File Info
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
               Text(
-                text = "File ${progress.currentFileIndex} of ${progress.totalFiles}",
+                text = "文件 ${progress.currentFileIndex} / ${progress.totalFiles}",
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,

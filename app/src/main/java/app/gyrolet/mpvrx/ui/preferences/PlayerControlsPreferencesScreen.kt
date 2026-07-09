@@ -198,7 +198,7 @@ object PlayerControlsPreferencesScreen : Screen {
               SeekbarStyle.entries.forEachIndexed { index, style ->
                 ListItem(
                   headlineContent = {
-                    Text(text = style.name)
+                    Text(text = style.displayName)
                   },
                   supportingContent = {
                     SeekbarStyleLivePreview(
@@ -297,7 +297,7 @@ object PlayerControlsPreferencesScreen : Screen {
                 onValueChange = { playerPrefs.clockFormat.set(it) },
                 values = PlayerClockFormat.entries,
                 valueToText = { AnnotatedString(it.displayName) },
-                title = { Text("Time + Network clock") },
+                title = { Text("时间 + 网络时钟") },
                 summary = { Text(clockFormat.displayName) },
               )
             }

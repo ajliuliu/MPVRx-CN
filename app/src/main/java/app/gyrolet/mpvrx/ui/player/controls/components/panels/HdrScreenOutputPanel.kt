@@ -125,12 +125,12 @@ private fun HdrPipelineUnavailableStatus(
       }
       Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Text(
-          text = "HDR cannot be enabled",
+          text = "无法启用 HDR",
           style = MaterialTheme.typography.titleLarge,
           fontWeight = FontWeight.SemiBold,
         )
         Text(
-          text = "Enable GPU Next and Vulkan before using HDR modes",
+          text = "请先启用 GPU Next 和 Vulkan 再使用 HDR 模式",
           style = MaterialTheme.typography.bodySmall,
           color = contentColor.copy(alpha = 0.78f),
         )

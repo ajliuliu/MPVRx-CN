@@ -89,17 +89,17 @@ import app.gyrolet.mpvrx.ui.preferences.components.SwitchPreference
 import org.koin.compose.koinInject
 
 private val allLanguages = mapOf(
-    "en" to "English", "es" to "Spanish", "fr" to "French", "de" to "German",
-    "it" to "Italian", "pt" to "Portuguese", "ru" to "Russian", "zh" to "Chinese",
-    "ja" to "Japanese", "ko" to "Korean", "ar" to "Arabic", "hi" to "Hindi",
-    "bn" to "Bengali", "vi" to "Vietnamese", "te" to "Telugu", "ta" to "Tamil",
-    "ur" to "Urdu", "tr" to "Turkish", "pl" to "Polish", "uk" to "Ukrainian",
-    "nl" to "Dutch", "el" to "Greek", "hu" to "Hungarian", "sv" to "Swedish",
-    "cs" to "Czech", "ro" to "Romanian", "da" to "Danish", "fi" to "Finnish",
-    "no" to "Norwegian", "he" to "Hebrew", "id" to "Indonesian", "th" to "Thai",
-    "ms" to "Malay", "fa" to "Persian", "sk" to "Slovak", "bg" to "Bulgarian",
-    "hr" to "Croatian", "sr" to "Serbian", "sl" to "Slovenian", "et" to "Estonian",
-    "lv" to "Latvian", "lt" to "Lithuanian", "af" to "Afrikaans", "sw" to "Swahili",
+    "en" to "英语", "es" to "西班牙语", "fr" to "法语", "de" to "德语",
+    "it" to "意大利语", "pt" to "葡萄牙语", "ru" to "俄语", "zh" to "中文",
+    "ja" to "日语", "ko" to "韩语", "ar" to "阿拉伯语", "hi" to "印地语",
+    "bn" to "孟加拉语", "vi" to "越南语", "te" to "泰卢固语", "ta" to "泰米尔语",
+    "ur" to "乌尔都语", "tr" to "土耳其语", "pl" to "波兰语", "uk" to "乌克兰语",
+    "nl" to "荷兰语", "el" to "希腊语", "hu" to "匈牙利语", "sv" to "瑞典语",
+    "cs" to "捷克语", "ro" to "罗马尼亚语", "da" to "丹麦语", "fi" to "芬兰语",
+    "no" to "挪威语", "he" to "希伯来语", "id" to "印尼语", "th" to "泰语",
+    "ms" to "马来语", "fa" to "波斯语", "sk" to "斯洛伐克语", "bg" to "保加利亚语",
+    "hr" to "克罗地亚语", "sr" to "塞尔维亚语", "sl" to "斯洛文尼亚语", "et" to "爱沙尼亚语",
+    "lv" to "拉脱维亚语", "lt" to "立陶宛语", "af" to "南非荷兰语", "sw" to "斯瓦希里语",
 )
 
 @Serializable
@@ -200,7 +200,7 @@ object AiIntegrationScreen : Screen {
         TopAppBar(
           title = {
             Text(
-              text = "AI Integration",
+              text = "AI 集成",
               style = MaterialTheme.typography.headlineSmall,
               fontWeight = FontWeight.ExtraBold,
               color = MaterialTheme.colorScheme.primary,
@@ -231,10 +231,10 @@ object AiIntegrationScreen : Screen {
               SwitchPreference(
                 value = enabled,
                 onValueChange = { preferences.enabled.set(it) },
-                title = { Text("Enable AI Features") },
+                title = { Text("启用 AI 功能") },
                 summary = {
                   Text(
-                    if (enabled) "AI features are active" else "AI features are disabled",
+                    if (enabled) "AI 功能已激活" else "AI 功能已禁用",
                     color = MaterialTheme.colorScheme.outline,
                   )
                 },
@@ -256,7 +256,7 @@ object AiIntegrationScreen : Screen {
                   },
                   values = providers,
                   valueToText = { androidx.compose.ui.text.AnnotatedString(it.displayName) },
-                  title = { Text("AI Provider") },
+                  title = { Text("AI 提供商") },
                   summary = {
                     Text(provider.displayName, color = MaterialTheme.colorScheme.outline)
                   },
@@ -273,17 +273,17 @@ object AiIntegrationScreen : Screen {
                     value = huggingfaceToken,
                     onValueChange = preferences.huggingfaceToken::set,
                     textToValue = { it.trim() },
-                    title = { Text("Hugging Face Token") },
+                    title = { Text("Hugging Face 令牌") },
                     summary = {
                       if (huggingfaceToken.isBlank()) {
-                        Text("Required for gated models. Get one from huggingface.co/settings/tokens", color = MaterialTheme.colorScheme.error)
+                        Text("受限模型需要令牌。请从 huggingface.co/settings/tokens 获取", color = MaterialTheme.colorScheme.error)
                       } else {
-                        Text("Token saved on device", color = MaterialTheme.colorScheme.outline)
+                        Text("令牌已保存在设备上", color = MaterialTheme.colorScheme.outline)
                       }
                     },
                     textField = { value, onValueChange, _ ->
                       Column {
-                        Text("Paste your Hugging Face token")
+                        Text("粘贴你的 Hugging Face 令牌")
                         TextField(
                           value = value,
                           onValueChange = onValueChange,
@@ -308,12 +308,12 @@ object AiIntegrationScreen : Screen {
                   verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                   Text(
-                    text = "Speed-first model picker",
+                    text = "速度优先模型选择器",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                   )
                   Text(
-                    text = "Models are ranked by how fast they feel after loading, RAM pressure, and subtitle translation quality.",
+                    text = "模型按加载后响应速度、内存占用和字幕翻译质量进行排序。",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.outline,
                   )
@@ -323,7 +323,7 @@ object AiIntegrationScreen : Screen {
                       .fillMaxWidth()
                       .horizontalScroll(rememberScrollState()),
                   ) {
-                    listOf("Recommended", "Fastest", "Best translation", "Downloaded").forEach { mode ->
+                    listOf("推荐", "最快", "最佳翻译", "已下载").forEach { mode ->
                       FilterChip(
                         selected = localModelSort == mode,
                         onClick = { localModelSort = mode },
@@ -335,9 +335,9 @@ object AiIntegrationScreen : Screen {
               }
 
               val visibleLocalModels = when (localModelSort) {
-                "Fastest" -> LocalModelCatalog.models.sortedByDescending { it.speedRank }
-                "Best translation" -> LocalModelCatalog.models.sortedByDescending { it.translationRank }
-                "Downloaded" -> LocalModelCatalog.models.sortedWith(
+                "最快" -> LocalModelCatalog.models.sortedByDescending { it.speedRank }
+                "最佳翻译" -> LocalModelCatalog.models.sortedByDescending { it.translationRank }
+                "已下载" -> LocalModelCatalog.models.sortedWith(
                   compareByDescending<LocalModelInfo> { aiService.isLocalModelDownloaded(it.id) }
                     .thenBy { it.tier.sortWeight }
                     .thenByDescending { it.speedRank },
@@ -416,12 +416,12 @@ object AiIntegrationScreen : Screen {
 
             if (provider != AiProvider.LOCAL) {
               val apiKeyInfo = when (provider) {
-                AiProvider.OPENCODE -> ApiKeyInfo("OpenCode API Key", "Get your key from opencode.ai/auth", "sk-...", openCodeKey, preferences.openCodeApiKey::set)
-                AiProvider.GROQ -> ApiKeyInfo("Groq API Key", "Get your key from console.groq.com", "gsk_...", groqKey, preferences.groqApiKey::set)
-                AiProvider.OPENAI -> ApiKeyInfo("OpenAI API Key", "Get your key from platform.openai.com/api-keys", "sk-...", openaiKey, preferences.openaiApiKey::set)
-                AiProvider.ANTHROPIC -> ApiKeyInfo("Anthropic API Key", "Get your key from console.anthropic.com", "sk-ant-...", anthropicKey, preferences.anthropicApiKey::set)
-                AiProvider.OPENROUTER -> ApiKeyInfo("OpenRouter API Key", "Get your key from openrouter.ai/keys", "sk-or-...", openrouterKey, preferences.openrouterApiKey::set)
-                AiProvider.TOGETHER -> ApiKeyInfo("Together API Key", "Get your key from api.together.xyz/settings/api-keys", "...", togetherKey, preferences.togetherApiKey::set)
+                AiProvider.OPENCODE -> ApiKeyInfo("OpenCode API 密钥", "从 opencode.ai/auth 获取密钥", "sk-...", openCodeKey, preferences.openCodeApiKey::set)
+                AiProvider.GROQ -> ApiKeyInfo("Groq API 密钥", "从 console.groq.com 获取密钥", "gsk_...", groqKey, preferences.groqApiKey::set)
+                AiProvider.OPENAI -> ApiKeyInfo("OpenAI API 密钥", "从 platform.openai.com/api-keys 获取密钥", "sk-...", openaiKey, preferences.openaiApiKey::set)
+                AiProvider.ANTHROPIC -> ApiKeyInfo("Anthropic API 密钥", "从 console.anthropic.com 获取密钥", "sk-ant-...", anthropicKey, preferences.anthropicApiKey::set)
+                AiProvider.OPENROUTER -> ApiKeyInfo("OpenRouter API 密钥", "从 openrouter.ai/keys 获取密钥", "sk-or-...", openrouterKey, preferences.openrouterApiKey::set)
+                AiProvider.TOGETHER -> ApiKeyInfo("Together API 密钥", "从 api.together.xyz/settings/api-keys 获取密钥", "...", togetherKey, preferences.togetherApiKey::set)
                 else -> null
               }
 
@@ -439,12 +439,12 @@ object AiIntegrationScreen : Screen {
                         if (apiKeyInfo.apiKey.isBlank()) {
                           Text(apiKeyInfo.hint, color = MaterialTheme.colorScheme.error)
                         } else {
-                          Text("API key saved on device", color = MaterialTheme.colorScheme.outline)
+                          Text("API 密钥已保存在设备上", color = MaterialTheme.colorScheme.outline)
                         }
                       },
                       textField = { value, onValueChange, _ ->
                         Column {
-                          Text("Paste your ${apiKeyInfo.title}")
+                          Text("粘贴你的 ${apiKeyInfo.title}")
                           TextField(
                             value = value,
                             onValueChange = onValueChange,
@@ -474,7 +474,7 @@ object AiIntegrationScreen : Screen {
                         ),
                         shape = MaterialTheme.shapes.extraLarge,
                       ) {
-                        Text(if (showApiKey) "Hide Key" else "Show Key")
+                        Text(if (showApiKey) "隐藏密钥" else "显示密钥")
                       }
 
                       Button(
@@ -488,7 +488,7 @@ object AiIntegrationScreen : Screen {
                                 preferences.lastVerified.set(System.currentTimeMillis())
                               }
                               .onFailure { e ->
-                                verifyResult = "Verification failed: ${e.message}"
+                                verifyResult = "验证失败: ${e.message}"
                               }
                             isVerifying = false
                           }
@@ -507,7 +507,7 @@ object AiIntegrationScreen : Screen {
                             color = MaterialTheme.colorScheme.onPrimary,
                           )
                         } else {
-                          Text("Verify Key")
+                          Text("验证密钥")
                         }
                       }
                     }
@@ -575,7 +575,7 @@ object AiIntegrationScreen : Screen {
                           )
                         }
                         Spacer(modifier = Modifier.size(4.dp))
-                        Text("Fetch Models")
+                        Text("获取模型")
                       }
                     }
 
@@ -614,7 +614,7 @@ object AiIntegrationScreen : Screen {
                             Text(
                               text = if (selectedModel.isNotBlank()) {
                                 modelDisplayNames[selectedModel] ?: selectedModel
-                              } else "Tap to select a model",
+                              } else "点击选择模型",
                               style = MaterialTheme.typography.bodySmall,
                               color = MaterialTheme.colorScheme.outline,
                             )
@@ -644,7 +644,7 @@ object AiIntegrationScreen : Screen {
                       }
                     } else {
                       Text(
-                        text = "Tap 'Fetch Models' to load available models from ${provider.displayName}",
+                        text = "点击「获取模型」从 ${provider.displayName} 加载可用模型",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.outline,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
@@ -660,7 +660,7 @@ object AiIntegrationScreen : Screen {
                       verticalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
                       Text(
-                        text = "Verify Model",
+                        text = "验证模型",
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.Bold,
                       )
@@ -693,7 +693,7 @@ object AiIntegrationScreen : Screen {
                           )
                           Spacer(Modifier.width(8.dp))
                         }
-                        Text("Check Model Access")
+                        Text("检查模型访问权限")
                       }
 
                       if (verifyModelResult != null) {
@@ -754,8 +754,8 @@ object AiIntegrationScreen : Screen {
                 SwitchPreference(
                   value = preferences.showThinking.collectAsState().value,
                   onValueChange = { preferences.showThinking.set(it) },
-                  title = { Text("Show AI Reasoning (Thinking)") },
-                  summary = { Text("Enable this to see the model's internal thought process for supported models.") },
+                  title = { Text("显示 AI 推理过程（思考）") },
+                  summary = { Text("启用以查看支持模型的内部分析过程。") },
                   icon = { Icon(Icons.Default.DeveloperBoard, contentDescription = null) }
                 )
               }
@@ -768,10 +768,10 @@ object AiIntegrationScreen : Screen {
                 SwitchPreference(
                   value = renameWithAi,
                   onValueChange = { preferences.renameWithAi.set(it) },
-                  title = { Text("AI-Powered Rename") },
+                  title = { Text("AI 智能重命名") },
                   summary = {
                     Text(
-                      "Use AI to generate clean filenames for bulk rename operations",
+                      "使用 AI 为批量重命名操作生成简洁文件名",
                       color = MaterialTheme.colorScheme.outline,
                     )
                   },
@@ -782,10 +782,10 @@ object AiIntegrationScreen : Screen {
                 SwitchPreference(
                   value = subtitleFormatWithAi,
                   onValueChange = { preferences.subtitleFormatWithAi.set(it) },
-                  title = { Text("AI Search") },
+                  title = { Text("AI 搜索") },
                   summary = {
                     Text(
-                      "Auto-format video titles for Wyzie/SubHub subtitle search",
+                      "自动格式化视频标题以用于 Wyzie/SubHub 字幕搜索",
                       color = MaterialTheme.colorScheme.outline,
                     )
                   },
@@ -805,10 +805,10 @@ object AiIntegrationScreen : Screen {
                   SwitchPreference(
                     value = realtimeSubsEnabled,
                     onValueChange = { preferences.realtimeSubsEnabled.set(it) },
-                    title = { Text("Real-time Subtitle Generation") },
+                    title = { Text("实时字幕生成") },
                     summary = {
                       Text(
-                        "Generate subtitles from audio while playing video",
+                        "播放视频时从音频生成字幕",
                         color = MaterialTheme.colorScheme.outline,
                       )
                     },
@@ -821,7 +821,7 @@ object AiIntegrationScreen : Screen {
                     onValueChange = { preferences.subtitleGenerationOutputFormat.set(it) },
                     values = listOf("srt", "vtt"),
                     valueToText = { androidx.compose.ui.text.AnnotatedString(it.uppercase()) },
-                    title = { Text("Default Output Format") },
+                    title = { Text("默认输出格式") },
                     summary = {
                       Text(
                         subtitleGenerationOutputFormat.uppercase(),
@@ -840,10 +840,10 @@ object AiIntegrationScreen : Screen {
                     },
                     values = sttProviders,
                     valueToText = { androidx.compose.ui.text.AnnotatedString(it.displayName) },
-                    title = { Text("Speech-to-Text Provider") },
+                    title = { Text("语音转文本提供商") },
                     summary = {
                       Text(
-                        "Used for both real-time streaming and batch subtitle generation",
+                        "用于实时流式和批量字幕生成",
                         color = MaterialTheme.colorScheme.outline,
                       )
                     },
@@ -867,20 +867,20 @@ object AiIntegrationScreen : Screen {
                     valueToText = { lang ->
                       androidx.compose.ui.text.AnnotatedString(
                         when (lang) {
-                          "" -> "Auto-detect"
-                          "en" -> "English"; "es" -> "Spanish"
-                          "fr" -> "French"; "de" -> "German"; "hi" -> "Hindi"; "ja" -> "Japanese"
-                          "zh" -> "Chinese"; "ko" -> "Korean"; "pt" -> "Portuguese"; "ru" -> "Russian"
-                          "ar" -> "Arabic"; "it" -> "Italian"; "nl" -> "Dutch"; "pl" -> "Polish"
-                          "tr" -> "Turkish"; "vi" -> "Vietnamese"; "th" -> "Thai"
+                          "" -> "自动检测"
+                          "en" -> "英语"; "es" -> "西班牙语"
+                          "fr" -> "法语"; "de" -> "德语"; "hi" -> "印地语"; "ja" -> "日语"
+                          "zh" -> "中文"; "ko" -> "韩语"; "pt" -> "葡萄牙语"; "ru" -> "俄语"
+                          "ar" -> "阿拉伯语"; "it" -> "意大利语"; "nl" -> "荷兰语"; "pl" -> "波兰语"
+                          "tr" -> "土耳其语"; "vi" -> "越南语"; "th" -> "泰语"
                           else -> lang
                         }
                       )
                     },
-                    title = { Text("Audio Language") },
+                    title = { Text("音频语言") },
                     summary = {
                       Text(
-                        if (sttLanguage.isBlank()) "Auto-detect speech language" else sttLanguage.uppercase(),
+                        if (sttLanguage.isBlank()) "自动检测语音语言" else sttLanguage.uppercase(),
                         color = MaterialTheme.colorScheme.outline,
                       )
                     },
@@ -902,10 +902,10 @@ object AiIntegrationScreen : Screen {
                         showSubtitleTranslationWarning = true
                       }
                     },
-                    title = { Text("Enable Translation") },
+                    title = { Text("启用翻译") },
                     summary = {
                       Text(
-                        "Translate external subtitles using AI",
+                        "使用 AI 翻译外部字幕",
                         color = MaterialTheme.colorScheme.outline,
                       )
                     },
@@ -928,11 +928,11 @@ object AiIntegrationScreen : Screen {
                 SwitchPreference(
                   value = customPromptEnabled,
                   onValueChange = { preferences.customPromptEnabled.set(it) },
-                  title = { Text("Override Default Instructions") },
+                  title = { Text("覆盖默认指令") },
                   summary = {
                     Text(
-                      if (customPromptEnabled) "Custom prompt will be used instead of built-in instructions"
-                      else "Built-in AI instructions will be used",
+                      if (customPromptEnabled) "将使用自定义提示词替代内置指令"
+                      else "将使用内置 AI 指令",
                       color = MaterialTheme.colorScheme.outline,
                     )
                   },
@@ -954,7 +954,7 @@ object AiIntegrationScreen : Screen {
                     )
 
                     Text(
-                      text = "Leave a field blank to use the built-in instruction for that task. If you have an older global prompt saved, it will be used as a fallback.",
+                      text = "将字段留空以使用该任务的内置指令。如果你保存了旧的全局提示词，它将作为后备使用。",
                       style = MaterialTheme.typography.bodySmall,
                       color = MaterialTheme.colorScheme.outline,
                     )
@@ -965,8 +965,8 @@ object AiIntegrationScreen : Screen {
                       modifier = Modifier
                         .fillMaxWidth()
                         .height(140.dp),
-                      label = { Text("Custom rename prompt") },
-                      placeholder = { Text("Instructions for AI file renaming...") },
+                      label = { Text("自定义重命名提示词") },
+                      placeholder = { Text("AI 文件重命名指令...") },
                       maxLines = 6,
                     )
 
@@ -976,8 +976,8 @@ object AiIntegrationScreen : Screen {
                       modifier = Modifier
                         .fillMaxWidth()
                         .height(140.dp),
-                      label = { Text("Custom subtitle translation prompt") },
-                      placeholder = { Text("Instructions for AI subtitle translation...") },
+                      label = { Text("自定义字幕翻译提示词") },
+                      placeholder = { Text("AI 字幕翻译指令...") },
                       maxLines = 6,
                     )
 
@@ -987,14 +987,14 @@ object AiIntegrationScreen : Screen {
                       modifier = Modifier
                         .fillMaxWidth()
                         .height(140.dp),
-                      label = { Text("Custom subtitle formatting prompt") },
-                      placeholder = { Text("Instructions for formatting subtitle search queries...") },
+                      label = { Text("自定义字幕格式化提示词") },
+                      placeholder = { Text("格式化字幕搜索查询的指令...") },
                       maxLines = 6,
                     )
 
                     if (customPrompt.isNotBlank()) {
                       Text(
-                        text = "Legacy global prompt saved. It will be used whenever a task-specific prompt is empty.",
+                        text = "已保存旧的全局提示词。当任务特定提示词为空时将使用它。",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.outline,
                       )
@@ -1013,11 +1013,11 @@ object AiIntegrationScreen : Screen {
           showSubtitleTranslationWarning = false
           preferences.subtitleTranslationFirstTime.set(false)
         },
-        title = { Text("Subtitle Translation") },
+        title = { Text("字幕翻译") },
         text = {
           Text(
-            "Subtitle translation can be a bit messy. " +
-            "For best results, use better models and don't rant that subs aren't working properly."
+            "字幕翻译可能不太完美。" +
+            "为获得最佳效果，请使用更好的模型，如果字幕效果不理想请勿抱怨。"
           )
         },
         confirmButton = {
@@ -1025,7 +1025,7 @@ object AiIntegrationScreen : Screen {
             showSubtitleTranslationWarning = false
             preferences.subtitleTranslationFirstTime.set(false)
           }) {
-            Text("Got it")
+            Text("知道了")
           }
         }
       )
@@ -1112,15 +1112,15 @@ private fun OfflineModelCard(
                     .fillMaxWidth()
                     .horizontalScroll(rememberScrollState()),
             ) {
-                if (isRecommended) ModelChip("Recommended here")
-                ModelChip("Speed ${model.speedRank}")
-                ModelChip("Translation ${model.translationRank}")
+                if (isRecommended) ModelChip("推荐")
+                ModelChip("速度 ${model.speedRank}")
+                ModelChip("翻译 ${model.translationRank}")
                 ModelChip(model.languageTier.label)
             }
 
             if (benchmark != null) {
                 Text(
-                    text = "${benchmark.speedLabel} - ${benchmark.loadLabel} - about ${benchmark.memoryEstimateMb} MB while loaded",
+                    text = "${benchmark.speedLabel} - ${benchmark.loadLabel} - 加载时约 ${benchmark.memoryEstimateMb} MB",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.primary,
                 )
@@ -1138,7 +1138,7 @@ private fun OfflineModelCard(
                     trackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)
                 )
                 Text(
-                    text = "${(percentage * 100).toInt()}% downloaded",
+                    text = "已下载 ${(percentage * 100).toInt()}%",
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.padding(top = 4.dp),
                     color = MaterialTheme.colorScheme.primary
@@ -1167,7 +1167,7 @@ private fun OfflineModelCard(
                             CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
                             Spacer(modifier = Modifier.width(6.dp))
                         }
-                        Text(if (benchmark == null) "Benchmark" else "Re-test")
+                        Text(if (benchmark == null) "基准测试" else "重新测试")
                     }
                 }
                 if (!isDownloaded && !isDownloading) {
@@ -1180,7 +1180,7 @@ private fun OfflineModelCard(
                     ) {
                         Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Download")
+                        Text("下载")
                     }
                 } else if (isDownloaded && !isSelected && !isDownloading) {
                     Button(
@@ -1191,7 +1191,7 @@ private fun OfflineModelCard(
                             contentColor = MaterialTheme.colorScheme.onSecondaryContainer
                         )
                     ) {
-                        Text("Use Model")
+                        Text("使用模型")
                     }
                 } else if (isSelected && isDownloaded && !isDownloading) {
                     Surface(
@@ -1210,7 +1210,7 @@ private fun OfflineModelCard(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                "Active", 
+                                "已激活", 
                                 style = MaterialTheme.typography.labelLarge, 
                                 color = MaterialTheme.colorScheme.onPrimary,
                                 fontWeight = FontWeight.Bold
@@ -1309,8 +1309,8 @@ private fun SttModelSelector(
         )
         Text(
           text = if (sttModel.isNotBlank()) sttModel
-                 else if (isLoadingStt) "Loading..."
-                 else "Tap to select STT model",
+                 else if (isLoadingStt) "加载中..."
+                 else "点击选择 STT 模型",
           style = MaterialTheme.typography.bodySmall,
           color = MaterialTheme.colorScheme.outline,
         )
@@ -1349,19 +1349,19 @@ private fun AutoTranslateLanguageConfig(
     verticalArrangement = Arrangement.spacedBy(8.dp),
   ) {
     Text(
-      text = "Auto-Translate Target Languages",
+      text = "自动翻译目标语言",
       style = MaterialTheme.typography.labelLarge,
       fontWeight = FontWeight.Bold,
     )
     Text(
-      text = "When translating subtitles, if 1 language is configured it translates directly. If 2+ are configured, a picker appears.",
+      text = "翻译字幕时，若配置 1 种语言则直接翻译；若配置 2 种及以上，将弹出选择器。",
       style = MaterialTheme.typography.bodySmall,
       color = MaterialTheme.colorScheme.outline,
     )
 
     if (selectedCodes.isEmpty()) {
       Text(
-        text = "No target languages configured",
+        text = "未配置目标语言",
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.error.copy(alpha = 0.7f),
       )
@@ -1414,7 +1414,7 @@ private fun AutoTranslateLanguageConfig(
         value = addingSearch,
         onValueChange = { addingSearch = it },
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text("Search languages...") },
+        placeholder = { Text("搜索语言...") },
         singleLine = true,
         shape = RoundedCornerShape(12.dp),
       )
@@ -1485,7 +1485,7 @@ private fun AutoTranslateLanguageConfig(
         modifier = Modifier.size(18.dp),
       )
       Spacer(modifier = Modifier.width(6.dp))
-      Text(if (adding) "Done" else "Add Language")
+      Text(if (adding) "完成" else "添加语言")
     }
   }
 }

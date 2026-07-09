@@ -62,7 +62,7 @@
   <!-- Theme names -->
   <string name="theme_default">默认</string>
   <string name="theme_dynamic">动态</string>
-  <string name="theme_cloudflare">Cloudflare</string>
+  <string name="theme_cloudflare">云端</string>
   <string name="theme_cotton_candy">棉花糖</string>
   <string name="theme_doom">毁灭</string>
   <string name="theme_green_apple">青苹果</string>
@@ -71,10 +71,10 @@
   <string name="theme_mocha">摩卡</string>
   <string name="theme_strawberry">草莓</string>
   <string name="theme_tidal">潮汐</string>
-  <string name="theme_nord">Nord</string>
-  <string name="theme_tako_green">Tako</string>
+  <string name="theme_nord">北欧</string>
+  <string name="theme_tako_green">章鱼绿</string>
   <string name="theme_yin_yang">阴阳</string>
-  <string name="theme_yotsuba">Yotsuba</string>
+  <string name="theme_yotsuba">四叶草</string>
   <string name="theme_sapphire">蓝宝石</string>
   <string name="theme_sunset">日落</string>
   <string name="theme_ocean">海洋</string>
@@ -84,12 +84,12 @@
   <string name="theme_amber">琥珀</string>
   <string name="theme_coral">珊瑚</string>
   <string name="theme_slate">石板灰</string>
-  <string name="theme_dracula">Dracula</string>
+  <string name="theme_dracula">德古拉</string>
   <string name="theme_monochrome">单色</string>
-  <string name="theme_catppuccin">Catppuccin</string>
-  <string name="theme_gruvbox">Gruvbox</string>
+  <string name="theme_catppuccin">猫布奇诺</string>
+  <string name="theme_gruvbox">复古暖调</string>
   <string name="theme_tokyo_night">东京之夜</string>
-  <string name="theme_kanagawa">Kanagawa</string>
+  <string name="theme_kanagawa">神奈川</string>
   <string name="theme_rose_pine">玫瑰松</string>
   <!-- Settings Search -->
   <string name="settings_search_hint">搜索设置…</string>

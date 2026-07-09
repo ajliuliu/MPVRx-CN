@@ -163,7 +163,7 @@ fun AmbientSheet(
 
             // ── Title ────────────────────────────────────────────────────────
             Text(
-                text = "Ambience Mode",
+                text = "氛围模式",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
@@ -206,7 +206,7 @@ fun AmbientSheet(
             // ── Section: Glow ────────────────────────────────────────────────
             var glowExpanded by remember { mutableStateOf(true) }
             SectionHeader(
-                title = "Glow",
+                title = "发光",
                 isExpanded = glowExpanded,
                 onClick = { glowExpanded = !glowExpanded },
             )
@@ -219,7 +219,7 @@ fun AmbientSheet(
                     verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
                 ) {
                     SliderItem(
-                        label = "Blur Samples",
+                        label = "模糊采样",
                         valueText = "$blurSamples",
                         value = blurSamples,
                         onChange = { viewModel.updateAmbientParams(blurSamples = it) },
@@ -236,7 +236,7 @@ fun AmbientSheet(
                     )
 
                     SliderItem(
-                        label = "Spread",
+                        label = "扩散",
                         valueText = "%.2f".format(maxRadius),
                         value = maxRadius,
                         onChange = { viewModel.updateAmbientParams(maxRadius = it) },
@@ -254,7 +254,7 @@ fun AmbientSheet(
                     )
 
                     SliderItem(
-                        label = "Glow Intensity",
+                        label = "发光强度",
                         valueText = "%.1f".format(glowIntensity),
                         value = glowIntensity,
                         onChange = { viewModel.updateAmbientParams(glowIntensity = it) },
@@ -272,7 +272,7 @@ fun AmbientSheet(
                     )
 
                     SliderItem(
-                        label = "Fade Curve",
+                        label = "衰减曲线",
                         valueText = "%.1f".format(fadeCurve),
                         value = fadeCurve,
                         onChange = { viewModel.updateAmbientParams(fadeCurve = it) },
@@ -299,7 +299,7 @@ fun AmbientSheet(
             // ── Section: Color ───────────────────────────────────────────────
             var colorExpanded by remember { mutableStateOf(true) }
             SectionHeader(
-                title = "Color",
+                title = "颜色",
                 isExpanded = colorExpanded,
                 onClick = { colorExpanded = !colorExpanded },
             )
@@ -312,7 +312,7 @@ fun AmbientSheet(
                     verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
                 ) {
                     SliderItem(
-                        label = "Saturation",
+                        label = "饱和度",
                         valueText = "%.1f".format(satBoost),
                         value = satBoost,
                         onChange = { viewModel.updateAmbientParams(satBoost = it) },
@@ -330,7 +330,7 @@ fun AmbientSheet(
                     )
 
                     SliderItem(
-                        label = "Warmth",
+                        label = "色温",
                         valueText = if (warmth == 0f) "0" else "%.2f".format(warmth),
                         value = warmth,
                         onChange = { viewModel.updateAmbientParams(warmth = it) },
@@ -357,7 +357,7 @@ fun AmbientSheet(
             // ── Section: Compositing ─────────────────────────────────────────
             var compositingExpanded by remember { mutableStateOf(true) }
             SectionHeader(
-                title = "Compositing",
+                title = "合成",
                 isExpanded = compositingExpanded,
                 onClick = { compositingExpanded = !compositingExpanded },
             )
@@ -370,7 +370,7 @@ fun AmbientSheet(
                     verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
                 ) {
                     SliderItem(
-                        label = "Opacity",
+                        label = "不透明度",
                         valueText = "%.2f".format(opacity),
                         value = opacity,
                         onChange = { viewModel.updateAmbientParams(opacity = it) },
@@ -388,7 +388,7 @@ fun AmbientSheet(
                     )
 
                     SliderItem(
-                        label = "Vignette",
+                        label = "暗角",
                         valueText = "%.1f".format(vignetteStrength),
                         value = vignetteStrength,
                         onChange = { viewModel.updateAmbientParams(vignetteStrength = it) },
@@ -413,7 +413,7 @@ fun AmbientSheet(
             )
 
             // ── Section: Visual Style ────────────────────────────────────────
-            SectionHeader(title = "Visual Style")
+            SectionHeader(title = "视觉风格")
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -441,7 +441,7 @@ fun AmbientSheet(
 
                 var frameExtendExpanded by remember { mutableStateOf(true) }
                 SectionHeader(
-                    title = "Frame Extend",
+                    title = "帧扩展",
                     isExpanded = frameExtendExpanded,
                     onClick = { frameExtendExpanded = !frameExtendExpanded },
                 )
@@ -454,7 +454,7 @@ fun AmbientSheet(
                         verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.small),
                     ) {
                         SliderItem(
-                            label = "Strength",
+                            label = "强度",
                             valueText = "%.2f".format(frameExtendStrength),
                             value = frameExtendStrength,
                             onChange = { viewModel.updateFrameExtendParams(extendStrength = it) },
@@ -472,7 +472,7 @@ fun AmbientSheet(
                         )
 
                         SliderItem(
-                            label = "Detail Protect",
+                            label = "细节保护",
                             valueText = "%.2f".format(frameExtendDetailProtection),
                             value = frameExtendDetailProtection,
                             onChange = { viewModel.updateFrameExtendParams(detailProtection = it) },
@@ -490,7 +490,7 @@ fun AmbientSheet(
                         )
 
                         SliderItem(
-                            label = "Glow Mix",
+                            label = "发光混合",
                             valueText = "%.2f".format(frameExtendGlowMix),
                             value = frameExtendGlowMix,
                             onChange = { viewModel.updateFrameExtendParams(glowMix = it) },
@@ -508,7 +508,7 @@ fun AmbientSheet(
                         )
 
                         SliderItem(
-                            label = "Bezel",
+                            label = "边框",
                             valueText = "%.3f".format(bezelDepth),
                             value = bezelDepth,
                             onChange = { viewModel.updateAmbientParams(bezelDepth = it) },
@@ -526,7 +526,7 @@ fun AmbientSheet(
                         )
 
                         SliderItem(
-                            label = "Dither",
+                            label = "抖动",
                             valueText = "%.3f".format(ditherNoise),
                             value = ditherNoise,
                             onChange = { viewModel.updateFrameExtendParams(ditherNoise = it) },

@@ -493,10 +493,10 @@ object AdvancedPreferencesScreen : Screen {
               PreferenceDivider()
 
               Preference(
-                title = { Text("yt-dlp Manager") },
+                title = { Text("yt-dlp 管理器") },
                 summary = {
                   Text(
-                    "Install and update yt-dlp for streaming support",
+                    "安装和更新 yt-dlp 以支持流媒体播放",
                     color = MaterialTheme.colorScheme.outline
                   )
                 },

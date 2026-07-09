@@ -964,14 +964,14 @@ private fun FolderListContent(
         if (showLoading) {
           LoadingState(
             icon = Icons.Filled.Folder,
-            title = "Scanning for videos...",
-            message = scanStatus ?: "Please wait while we search your device",
+            title = "正在扫描视频...",
+            message = scanStatus ?: "请稍候，正在搜索您的设备",
           )
         } else if (showEmpty) {
           EmptyState(
             icon = Icons.Filled.Folder,
-            title = "No video folders found",
-            message = "Add some video files to your device to see them here",
+            title = "未找到视频文件夹",
+            message = "请将视频文件添加到您的设备以在此查看",
           )
         }
       }

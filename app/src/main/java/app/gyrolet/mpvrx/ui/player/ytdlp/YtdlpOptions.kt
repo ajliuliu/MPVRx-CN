@@ -4,7 +4,7 @@ import app.gyrolet.mpvrx.preferences.SubtitlesPreferences
 import app.gyrolet.mpvrx.preferences.YtdlPreferences
 
 enum class YtdlCodecPreference(val title: String) {
-  AUTO("Auto"),
+  AUTO("自动"),
   H264("H.264 / AVC"),
   HEVC("HEVC / H.265"),
   VP9("VP9"),
@@ -13,25 +13,25 @@ enum class YtdlCodecPreference(val title: String) {
 }
 
 enum class YtdlContainerPreference(val title: String) {
-  ANY("Any"),
+  ANY("不限"),
   MP4("MP4"),
   WEBM("WebM"),
 }
 
 enum class YtdlHdrPreference(val title: String) {
-  ANY("Any"),
-  SDR("Prefer SDR"),
-  HDR("Prefer HDR"),
+  ANY("不限"),
+  SDR("偏好 SDR"),
+  HDR("偏好 HDR"),
 }
 
 enum class YtdlPlaylistMode(val title: String) {
-  DEFAULT("yt-dlp default"),
-  SINGLE_VIDEO("Single video only"),
-  WHOLE_PLAYLIST("Whole playlist"),
+  DEFAULT("yt-dlp 默认"),
+  SINGLE_VIDEO("仅单个视频"),
+  WHOLE_PLAYLIST("整个播放列表"),
 }
 
 enum class YtdlAudioPreference(val title: String) {
-  AUTO("Auto / Best"),
+  AUTO("自动 / 最佳"),
   AAC("AAC"),
   OPUS("Opus"),
   M4A("M4A"),

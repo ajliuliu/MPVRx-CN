@@ -663,12 +663,12 @@ private fun PlaylistVideoListContent(
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
           )
           Text(
-            text = "No videos in playlist",
+            text = "播放列表中暂无视频",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )
           Text(
-            text = "Add videos to get started",
+            text = "添加视频以开始使用",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )

@@ -118,7 +118,7 @@ object FoldersPreferencesScreen : Screen {
     Scaffold(
       topBar = {
         BrowserTopBar(
-          title = "Storage",
+          title = "存储",
           isInSelectionMode = selectionState.isInSelectionMode,
           selectedCount = selectionState.selectedCount,
           totalCount = blacklistedFoldersList.size,

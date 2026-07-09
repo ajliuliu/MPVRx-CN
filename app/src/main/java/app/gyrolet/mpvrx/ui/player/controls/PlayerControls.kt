@@ -1131,7 +1131,7 @@ fun PlayerControls(
                   ) {
                     Icon(
                       imageVector = Icons.Default.SkipPrevious,
-                      contentDescription = "Previous",
+                      contentDescription = "上一个",
                       tint =
                         if (viewModel.hasPrevious()) {
                           if (hideBackground) controlColor else MaterialTheme.colorScheme.onSurface
@@ -1228,7 +1228,7 @@ fun PlayerControls(
                   ) {
                     Icon(
                       imageVector = Icons.Default.SkipNext,
-                      contentDescription = "Next",
+                      contentDescription = "下一个",
                       tint =
                         if (viewModel.hasNext()) {
                           if (hideBackground) controlColor else MaterialTheme.colorScheme.onSurface
@@ -1739,13 +1739,13 @@ private fun CustomStatsPageSixOverlay(
         cpuPercent = 0f,
         gpuEstimatePercent = 0f,
         batteryPercentText = "--%",
-        batteryRateText = "Unknown",
+        batteryRateText = "未知",
         batteryWattsText = "-- W",
         batteryTempText = "--°C",
         hdrActive = "--",
         sessionPlayTimeText = "00:00:00",
-        decoderEfficiencyText = "Unknown",
-        thermalStateText = "Normal",
+        decoderEfficiencyText = "未知",
+        thermalStateText = "正常",
         peakTempText = "--°C",
         tempRiseText = "+0.0°C",
       ),

@@ -242,7 +242,7 @@ fun SubtitlesSheet(
             ) {
               Icon(
                 imageVector = Icons.Default.Close,
-                contentDescription = "Cancel translation",
+                contentDescription = "取消翻译",
                 modifier = Modifier.size(20.dp),
               )
             }
@@ -360,7 +360,7 @@ fun SubtitleTrackRow(
     
     if (isExternal) {
       if (translationEnabled) {
-        IconButton(onClick = onTranslate) { Icon(Icons.Default.Translate, contentDescription = "Translate") }
+        IconButton(onClick = onTranslate) { Icon(Icons.Default.Translate, contentDescription = "翻译") }
       }
       IconButton(onClick = onRemove) { Icon(Icons.Default.Delete, contentDescription = null) }
     }

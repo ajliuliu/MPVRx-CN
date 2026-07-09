@@ -130,7 +130,7 @@ fun PermissionDeniedState(
 
         // Title
         Text(
-          text = "Storage Access Required",
+          text = "需要存储访问权限",
           style = MaterialTheme.typography.headlineMedium,
           fontWeight = FontWeight.Bold,
           textAlign = TextAlign.Center,
@@ -155,12 +155,12 @@ fun PermissionDeniedState(
             Text(
               text = if (isPlayStoreBuild) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                  "MpvRx requires \"Photos and videos\" permission to access and play your video files stored on your device."
+                  "MpvRx 需要「照片和视频」权限才能访问并播放您设备上存储的视频文件。"
                 } else {
-                  "MpvRx requires \"Storage\" permission to access and play your media files stored on your device."
+                  "MpvRx 需要「存储」权限才能访问并播放您设备上存储的媒体文件。"
                 }
               } else {
-                "MpvRx requires \"All file access\" permission to discover media and subtitles on your device due to a change in security policy in Android 11 and later versions."
+                "由于 Android 11 及以上版本安全策略的变更，MpvRx 需要「所有文件访问」权限来发现您设备上的媒体和字幕文件。"
               },
               style = MaterialTheme.typography.bodyLarge,
               color = MaterialTheme.colorScheme.onSurface,
@@ -202,7 +202,7 @@ fun PermissionDeniedState(
           shape = AppShapeScale.large,
         ) {
           Text(
-            text = "ALLOW ACCESS",
+            text = "允许访问",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold,
           )
@@ -221,7 +221,7 @@ fun PermissionDeniedState(
           )
           Spacer(modifier = Modifier.width(6.dp))
           Text(
-            text = "Why do I see this?",
+            text = "为什么会看到这个？",
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Medium,
           )
@@ -248,7 +248,7 @@ fun PermissionDeniedState(
       },
       title = {
         Text(
-          text = "Why this permission is needed",
+          text = "为什么需要此权限",
           style = MaterialTheme.typography.headlineSmall,
           fontWeight = FontWeight.Bold,
         )
@@ -264,56 +264,56 @@ fun PermissionDeniedState(
           if (isPlayStoreBuild) {
             // Play Store build explanation
             Text(
-              text = "MpvRx needs access to your video files to provide its core functionality as a media player.",
+              text = "MpvRx 需要访问您的视频文件以提供媒体播放器的核心功能。",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             Text(
               text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                "On Android 13 and above, this permission allows the app to read video files from your device's storage, including Downloads, Movies, and DCIM folders."
+                "在 Android 13 及以上版本中，此权限允许应用读取设备存储中的视频文件，包括下载、电影和 DCIM 文件夹。"
               } else {
-                "This permission allows the app to read media files from your device's storage to play videos and audio."
+                "此权限允许应用读取设备存储中的媒体文件以播放视频和音频。"
               },
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             Text(
-              text = "The permission is used exclusively for:",
+              text = "此权限仅用于：",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
               fontWeight = FontWeight.Medium,
             )
 
             Text(
-              text = "• Discovering and displaying your video files\n• Playing media content\n• Loading subtitle files",
+              text = "• 发现和显示您的视频文件\n• 播放媒体内容\n• 加载字幕文件",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
           } else {
             // Standard build explanation
             Text(
-              text = "MpvRx has always required storage access permission as it's essential for the app to find all media and subtitle files on your device, including the ones that are not supported by the system.",
+              text = "MpvRx 一直需要存储访问权限，因为这对应用查找设备上的所有媒体和字幕文件至关重要，包括系统不支持的格式。",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             Text(
-              text = "However, due to a change in security policy, apps built for Android 11 and above now require additional permission to continue accessing the same.",
+              text = "但是，由于安全策略的变更，针对 Android 11 及以上版本构建的应用现在需要额外权限才能继续访问。",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
 
             Text(
-              text = "Please know that this permission is only used for the auto-discovery of media/subtitle files on your device and will not allow us to access the private data files stored by other apps in any way.",
+              text = "请知悉，此权限仅用于在您的设备上自动发现媒体/字幕文件，绝不会允许我们以任何方式访问其他应用存储的私有数据文件。",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
           }
 
           Text(
-            text = "MpvRx is an open source project. You can review the source code and verify how permissions are used by visiting our GitHub repository at:",
+            text = "MpvRx 是一个开源项目。您可以查看源代码并验证权限的使用方式，访问我们的 GitHub 仓库：",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )
@@ -355,7 +355,7 @@ fun PermissionDeniedState(
           )
 
           Text(
-            text = "Be rest assured, your privacy is our utmost priority, and we neither access your files for other purposes nor transfer or store them to our servers. They remain safe on your device.",
+            text = "请放心，您的隐私是我们的首要任务。我们不会将您的文件用于其他目的，也不会将其传输或存储到我们的服务器。它们将安全地保留在您的设备上。",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontWeight = FontWeight.Medium,

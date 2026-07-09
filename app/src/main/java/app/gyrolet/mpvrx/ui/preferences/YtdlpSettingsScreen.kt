@@ -93,9 +93,9 @@ object YtdlpSettingsScreen : Screen {
                     val f = File(ytdlDir, "yt-dlp")
                     if (f.exists()) " (${f.length() / 1024 / 1024} MB)" else ""
                 } catch (_: Exception) { "" }
-                "Installed$size"
+                "已安装$size"
             } else {
-                "Not Configured"
+                "未配置"
             }
         }
 
@@ -164,8 +164,8 @@ object YtdlpSettingsScreen : Screen {
                             )
                             Spacer(Modifier.height(2.dp))
                             Text(
-                                text = if (hasYtdlp) "Subprocess active and ready for streaming" 
-                                       else "Engine missing. Please run installation below.",
+                                text = if (hasYtdlp) "子进程已激活，可用于流媒体播放" 
+                                       else "引擎缺失，请运行下方安装程序。",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -197,13 +197,13 @@ object YtdlpSettingsScreen : Screen {
                         verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         Text(
-                            text = "Manage yt-dlp Environment",
+                            text = "管理 yt-dlp 环境",
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "Download the latest wrapper modules and compile python-friendly native binaries inside local sandboxed folders.",
+                            text = "下载最新的封装模块并在本地沙盒文件夹内编译 Python 原生二进制文件。",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -230,7 +230,7 @@ object YtdlpSettingsScreen : Screen {
                             ) {
                                 Icon(Icons.Default.Download, null, modifier = Modifier.size(18.dp))
                                 Spacer(Modifier.width(8.dp))
-                                Text("Install Core")
+                                Text("安装核心")
                             }
 
                             OutlinedButton(
@@ -251,7 +251,7 @@ object YtdlpSettingsScreen : Screen {
                             ) {
                                 Icon(Icons.Default.Update, null, modifier = Modifier.size(18.dp))
                                 Spacer(Modifier.width(8.dp))
-                                Text("Update Core")
+                                Text("更新核心")
                             }
                         }
 
@@ -275,7 +275,7 @@ object YtdlpSettingsScreen : Screen {
                         ) {
                             Icon(Icons.Default.Update, null, modifier = Modifier.size(18.dp))
                             Spacer(Modifier.width(8.dp))
-                            Text("Update to Nightly Build")
+                            Text("更新到每日构建版")
                         }
                     }
                 }
@@ -295,7 +295,7 @@ object YtdlpSettingsScreen : Screen {
                         )
                         
                         val qualityLevels = remember { arrayOf(-1, 2160, 1440, 1080, 720, 480, 360, 240, 144) }
-                        val qualityLabels = remember { qualityLevels.map { if (it == -1) "Any" else "${it}p" } }
+                        val qualityLabels = remember { qualityLevels.map { if (it == -1) "不限" else "${it}p" } }
 
                         FlowRow(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -337,7 +337,7 @@ object YtdlpSettingsScreen : Screen {
                             verticalArrangement = Arrangement.spacedBy(8.dp),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            listOf(0 to "Any FPS", 30 to "30 FPS", 60 to "60 FPS", 120 to "120 FPS").forEach { (fps, label) ->
+                            listOf(0 to "不限帧率", 30 to "30 FPS", 60 to "60 FPS", 120 to "120 FPS").forEach { (fps, label) ->
                                 FilterChip(
                                     selected = maxFps == fps,
                                     onClick = {
@@ -411,7 +411,7 @@ object YtdlpSettingsScreen : Screen {
                                 )
                                 Spacer(Modifier.height(4.dp))
                                 Text(
-                                    text = currentFormat.ifBlank { "(default)" },
+                                    text = currentFormat.ifBlank { "(默认)" },
                                     style = MaterialTheme.typography.bodySmall.copy(
                                         fontFamily = FontFamily.Monospace,
                                         fontSize = 11.sp
@@ -433,8 +433,8 @@ object YtdlpSettingsScreen : Screen {
                         SwitchPreference(
                             value = writeSubs,
                             onValueChange = { ytdlPreferences.writeSubs.set(it) },
-                            title = { Text("Download Media Subtitles", fontWeight = FontWeight.Medium) },
-                            summary = { Text("Automatically extract and load physical subtitle tracks from supported URLs.") }
+                            title = { Text("下载媒体字幕", fontWeight = FontWeight.Medium) },
+                            summary = { Text("自动从支持的 URL 提取并加载实体字幕轨道。") }
                         )
 
                         PreferenceDivider()
@@ -442,8 +442,8 @@ object YtdlpSettingsScreen : Screen {
                         SwitchPreference(
                             value = writeAutoSubs,
                             onValueChange = { ytdlPreferences.writeAutoSubs.set(it) },
-                            title = { Text("Include Auto-Generated Subtitles", fontWeight = FontWeight.Medium) },
-                            summary = { Text("Fetch auto-caption tracks (e.g. YouTube Speech-to-Text) when regular subs are absent.") }
+                            title = { Text("包含自动生成的字幕", fontWeight = FontWeight.Medium) },
+                            summary = { Text("当常规字幕不存在时，获取自动字幕轨道（如 YouTube 语音转文本）。") }
                         )
 
                         PreferenceDivider()
@@ -454,12 +454,12 @@ object YtdlpSettingsScreen : Screen {
                                 subtitleLanguagesText = it
                                 ytdlPreferences.subtitleLanguages.set(it)
                             },
-                            label = { Text("Subtitle Languages") },
-                            placeholder = { Text("all or en.*,ja") },
+                            label = { Text("字幕语言") },
+                            placeholder = { Text("all 或 en.*,ja") },
                             singleLine = true,
                             shape = RoundedCornerShape(12.dp),
                             modifier = Modifier.fillMaxWidth(),
-                            supportingText = { Text("Overrides app subtitle languages only for yt-dlp downloads.") }
+                            supportingText = { Text("仅针对 yt-dlp 下载覆盖应用字幕语言设置。") }
                         )
                     }
                 }
@@ -487,7 +487,7 @@ object YtdlpSettingsScreen : Screen {
                                     color = MaterialTheme.colorScheme.onSurface
                                 )
                                 Text(
-                                    text = "Custom HTTP agent, proxy, extractor args, SponsorBlock, and raw options",
+                                    text = "自定义 HTTP 代理、提取器参数、SponsorBlock 和原始选项",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -515,12 +515,12 @@ object YtdlpSettingsScreen : Screen {
                                         formatSortText = it
                                         ytdlPreferences.formatSort.set(it)
                                     },
-                                    label = { Text("Format Sort") },
+                                    label = { Text("格式排序") },
                                     placeholder = { Text("res,fps,hdr:12,vcodec:vp9.2") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
                                     modifier = Modifier.fillMaxWidth(),
-                                    supportingText = { Text("Passed to yt-dlp as format-sort for advanced ranking.") }
+                                    supportingText = { Text("传递给 yt-dlp 的 format-sort 参数，用于高级排序。") }
                                 )
 
                                 PreferenceDivider()
@@ -531,7 +531,7 @@ object YtdlpSettingsScreen : Screen {
                                         mergeOutputFormatText = it
                                         ytdlPreferences.mergeOutputFormat.set(it)
                                     },
-                                    label = { Text("Merge Output Format") },
+                                    label = { Text("合并输出格式") },
                                     placeholder = { Text("mp4, mkv, webm") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
@@ -546,7 +546,7 @@ object YtdlpSettingsScreen : Screen {
                                         userAgentText = it
                                         ytdlPreferences.customUserAgent.set(it)
                                     },
-                                    label = { Text("Custom User-Agent Override") },
+                                    label = { Text("自定义 User-Agent 覆盖") },
                                     placeholder = { Text("Mozilla/5.0 ...") },
                                     singleLine = false,
                                     maxLines = 3,
@@ -557,7 +557,7 @@ object YtdlpSettingsScreen : Screen {
                                         unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
                                     ),
                                     supportingText = {
-                                        Text("Leave blank to use default browser User-Agent. Helps bypass anti-bot scrapers.")
+                                        Text("留空使用默认浏览器 User-Agent。有助于绕过反爬虫检测。")
                                     }
                                 )
 
@@ -582,7 +582,7 @@ object YtdlpSettingsScreen : Screen {
                                         cookiesFileText = it
                                         ytdlPreferences.cookiesFile.set(it)
                                     },
-                                    label = { Text("Cookies File") },
+                                    label = { Text("Cookie 文件") },
                                     placeholder = { Text("/storage/emulated/0/Download/cookies.txt") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
@@ -595,7 +595,7 @@ object YtdlpSettingsScreen : Screen {
                                         proxyText = it
                                         ytdlPreferences.proxy.set(it)
                                     },
-                                    label = { Text("Proxy") },
+                                    label = { Text("代理") },
                                     placeholder = { Text("socks5://127.0.0.1:1080") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
@@ -608,7 +608,7 @@ object YtdlpSettingsScreen : Screen {
                                         extractorArgsText = it
                                         ytdlPreferences.extractorArgs.set(it)
                                     },
-                                    label = { Text("Extractor Args") },
+                                    label = { Text("提取器参数") },
                                     placeholder = { Text("youtube:player_client=android,web") },
                                     singleLine = false,
                                     maxLines = 2,
@@ -627,15 +627,15 @@ object YtdlpSettingsScreen : Screen {
                                 SwitchPreference(
                                     value = geoBypass,
                                     onValueChange = { ytdlPreferences.geoBypass.set(it) },
-                                    title = { Text("Geo Bypass", fontWeight = FontWeight.Medium) },
-                                    summary = { Text("Ask yt-dlp to use its extractor-level region bypass logic.") }
+                                    title = { Text("地理位置绕过", fontWeight = FontWeight.Medium) },
+                                    summary = { Text("要求 yt-dlp 使用提取器级别的区域绕过逻辑。") }
                                 )
 
                                 SwitchPreference(
                                     value = liveFromStart,
                                     onValueChange = { ytdlPreferences.liveFromStart.set(it) },
-                                    title = { Text("Live From Start", fontWeight = FontWeight.Medium) },
-                                    summary = { Text("Start live streams from the beginning when the extractor supports it.") }
+                                    title = { Text("从头播放直播", fontWeight = FontWeight.Medium) },
+                                    summary = { Text("当提取器支持时，从头开始播放直播流。") }
                                 )
 
                                 OutlinedTextField(
@@ -644,7 +644,7 @@ object YtdlpSettingsScreen : Screen {
                                         sponsorBlockMarkText = it
                                         ytdlPreferences.sponsorBlockMark.set(it)
                                     },
-                                    label = { Text("SponsorBlock Mark") },
+                                    label = { Text("SponsorBlock 标记") },
                                     placeholder = { Text("sponsor,selfpromo") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
@@ -657,7 +657,7 @@ object YtdlpSettingsScreen : Screen {
                                         sponsorBlockRemoveText = it
                                         ytdlPreferences.sponsorBlockRemove.set(it)
                                     },
-                                    label = { Text("SponsorBlock Remove") },
+                                    label = { Text("SponsorBlock 移除") },
                                     placeholder = { Text("sponsor") },
                                     singleLine = true,
                                     shape = RoundedCornerShape(12.dp),
@@ -672,7 +672,7 @@ object YtdlpSettingsScreen : Screen {
                                         rawOptionsText = it
                                         ytdlPreferences.customRawOptions.set(it)
                                     },
-                                    label = { Text("Raw yt-dlp Options") },
+                                    label = { Text("原始 yt-dlp 选项") },
                                     placeholder = { Text("extractor-args=\"youtube:player_client=android,web\"\ngeo-bypass=") },
                                     singleLine = false,
                                     maxLines = 6,
@@ -683,7 +683,7 @@ object YtdlpSettingsScreen : Screen {
                                         unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant
                                     ),
                                     supportingText = {
-                                        Text("Anything not exposed above. Separate options with new lines or commas; quote values that contain commas.")
+                                        Text("以上未涵盖的选项。用换行符或逗号分隔选项；包含逗号的值需加引号。")
                                     }
                                 )
                             }

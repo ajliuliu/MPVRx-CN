@@ -231,7 +231,7 @@ fun PlaylistSheet(
             ) {
               Icon(
                 imageVector = if (isListMode) Icons.Default.GridView else Icons.Default.ViewList,
-                contentDescription = if (isListMode) "Switch to Grid View" else "Switch to List View",
+                contentDescription = if (isListMode) "切换到网格视图" else "切换到列表视图",
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
               )
             }
@@ -449,7 +449,7 @@ fun PlaylistTrackListItem(
             shape = RoundedCornerShape(16.dp),
           ) {
             Text(
-              text = "Playing",
+              text = "播放中",
               modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
               style = MaterialTheme.typography.labelSmall.copy(
                 fontWeight = FontWeight.SemiBold,
@@ -648,7 +648,7 @@ fun PlaylistTrackGridItem(
               shape = RoundedCornerShape(4.dp),
             ) {
               Text(
-                text = "Playing",
+                text = "播放中",
                 modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
                 style = MaterialTheme.typography.labelSmall.copy(
                   fontSize = 10.sp,

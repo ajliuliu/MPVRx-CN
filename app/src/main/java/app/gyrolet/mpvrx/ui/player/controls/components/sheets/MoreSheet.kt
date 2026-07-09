@@ -491,7 +491,7 @@ fun SectionHeaderWithInfo(
     IconButton(onClick = onInfoClick, modifier = Modifier.size(24.dp)) {
       Icon(
         imageVector = Icons.Outlined.Info,
-        contentDescription = "Info",
+        contentDescription = "信息",
         tint = MaterialTheme.colorScheme.primary,
         modifier = Modifier.size(16.dp)
       )

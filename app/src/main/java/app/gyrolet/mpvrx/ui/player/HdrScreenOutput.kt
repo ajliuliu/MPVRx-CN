@@ -29,19 +29,19 @@ enum class HdrScreenMode(
   BT_2100_PQ(
     title = "BT.2100 PQ",
     shortTitle = "PQ",
-    description = "HDR10-style PQ with Astra tone mapping and Bottosson gamut mapping",
+    description = "HDR10 风格 PQ，带 Astra 色调映射和 Bottosson 色域映射",
     hdrToysProfile = HdrToysProfile.BT_2100_PQ,
   ),
   BT_2100_HLG(
     title = "BT.2100 HLG",
     shortTitle = "HLG",
-    description = "HLG HDR through the hdr-toys Astra and Bottosson shader chain",
+    description = "通过 hdr-toys Astra 和 Bottosson 着色器链实现的 HLG HDR",
     hdrToysProfile = HdrToysProfile.BT_2100_HLG,
   ),
   BT_2020(
     title = "BT.2020",
     shortTitle = "BT.2020",
-    description = "BT.2020 / BT.1886 conversion using hdr-toys gamut mapping",
+    description = "使用 hdr-toys 色域映射进行 BT.2020/BT.1886 转换",
     hdrToysProfile = HdrToysProfile.BT_2020,
   ),
   LINEAR(

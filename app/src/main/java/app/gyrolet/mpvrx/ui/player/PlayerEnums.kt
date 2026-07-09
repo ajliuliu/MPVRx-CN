@@ -74,11 +74,11 @@ enum class MPVProfile(
   val displayName: String,
   val value: String,
 ) {
-  Fast("Fast", "fast"),
-  Default("Default", "default"),
-  HighQuality("High Quality", "high-quality"),
+  Fast("快速", "fast"),
+  Default("默认", "default"),
+  HighQuality("高质量", "high-quality"),
   GpuHQ("GPU HQ", "gpu-hq"),
-  LowLatency("Low Latency", "low-latency"),
+  LowLatency("低延迟", "low-latency"),
   SwFast("SW Fast", "sw-fast"),
   ;
 
@@ -377,13 +377,13 @@ enum class DebandSettings(
 /** Controls whether the playback service shows a notification, and which style it uses. */
 enum class NotificationStyle(val displayName: String) {
   /** Do not show any playback notification. */
-  None("No Notification"),
+  None("不显示通知"),
 
   /** Classic MediaStyle with transport controls rendered by the system. */
-  Media("Media Controls"),
+  Media("媒体控制"),
 
   /** Progress-centric style with chapter segment indicators (Android 16+ only). */
-  Progress("Progress with Chapters"),
+  Progress("章节进度"),
 
   ;
 

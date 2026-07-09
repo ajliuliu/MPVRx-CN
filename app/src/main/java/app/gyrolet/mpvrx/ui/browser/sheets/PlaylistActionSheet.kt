@@ -180,7 +180,7 @@ fun PlaylistActionSheet(
           verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
           Text(
-            text = "Create Playlist",
+            text = "创建播放列表",
             style = MaterialTheme.typography.headlineSmall,
           )
           OutlinedTextField(

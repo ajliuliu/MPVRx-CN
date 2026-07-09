@@ -58,7 +58,7 @@ fun LuaScriptsPanel(
       if (isEnabled) {
         Toast.makeText(
           context,
-          "$scriptName disabled. Reopen the video if the script stays active.",
+          "$scriptName 已禁用。如脚本仍保持活跃，请重新打开视频。",
           Toast.LENGTH_LONG,
         ).show()
         selectedScripts - scriptName
@@ -81,7 +81,7 @@ fun LuaScriptsPanel(
             .padding(top = MaterialTheme.spacing.small),
       ) {
         Text(
-          text = "Scripts (Lua / JS)",
+          text = "脚本（Lua / JS）",
           style = MaterialTheme.typography.titleLarge,
         )
         Spacer(Modifier.weight(1f))
@@ -112,14 +112,14 @@ fun LuaScriptsPanel(
         }
         mpvConfStorageLocation.isBlank() -> {
           LuaScriptsEmptyState(
-            title = "No MPV folder selected",
-            summary = "Choose an MPV config folder in Advanced settings, then open this panel again to manage scripts.",
+            title = "未选择 MPV 文件夹",
+            summary = "请在高级设置中选择 MPV 配置文件夹，然后重新打开此面板以管理脚本。",
           )
         }
         catalog.availableScripts.isEmpty() -> {
           LuaScriptsEmptyState(
-            title = "No scripts found",
-            summary = "Put your .lua or .js files inside the MPV scripts folder to manage them here.",
+            title = "未找到脚本",
+            summary = "将 .lua 或 .js 文件放入 MPV scripts 文件夹即可在此管理。",
           )
         }
         else -> {
