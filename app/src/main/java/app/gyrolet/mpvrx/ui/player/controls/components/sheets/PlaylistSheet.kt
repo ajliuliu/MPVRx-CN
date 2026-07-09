@@ -205,7 +205,7 @@ fun PlaylistSheet(
           ) {
             if (currentItem != null) {
               Text(
-                text = "Now Playing",
+                text = "正在播放",
                 style = MaterialTheme.typography.titleSmall.copy(
                   fontWeight = FontWeight.Bold,
                   color = accentColor,
@@ -218,7 +218,7 @@ fun PlaylistSheet(
               )
             }
             Text(
-              text = "$totalCount items",
+              text = "$totalCount 项",
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )

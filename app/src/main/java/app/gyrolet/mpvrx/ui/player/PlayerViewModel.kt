@@ -4116,7 +4116,7 @@ class PlayerViewModel(
     } else {
       MPVLib.command("vf", "remove", "@mpvrx_hflip")
     }
-    playerUpdate.value = PlayerUpdates.ShowText(if (newMirrorState) "H-Flip On" else "H-Flip Off")
+    playerUpdate.value = PlayerUpdates.ShowText(if (newMirrorState) "水平翻转: 开" else "水平翻转: 关")
   }
 
   fun toggleVerticalFlip() {
@@ -4130,7 +4130,7 @@ class PlayerViewModel(
       MPVLib.command("vf", "remove", "@mpvrx_vflip")
     }
 
-    playerUpdate.value = PlayerUpdates.ShowText(if (newState) "V-Flip On" else "V-Flip Off")
+    playerUpdate.value = PlayerUpdates.ShowText(if (newState) "垂直翻转: 开" else "垂直翻转: 关")
   }
 
   fun toggleHdrScreenOutput() {
@@ -4143,8 +4143,8 @@ class PlayerViewModel(
   fun setHdrScreenMode(mode: HdrScreenMode) {
     val pipelineReady = isHdrScreenOutputAvailable(mode)
     if (mode != HdrScreenMode.OFF && !pipelineReady) {
-      val message = if (mode == HdrScreenMode.LINEAR) "Linear HDR needs GPU Next + Vulkan"
-                    else "HDR Screen output needs GPU Next"
+      val message = if (mode == HdrScreenMode.LINEAR) "线性 HDR 需要启用 GPU Next + Vulkan"
+                    else "HDR 屏幕输出需要启用 GPU Next"
       playerUpdate.value = PlayerUpdates.ShowText(message)
       applyHdrScreenOutput(HdrScreenMode.OFF)
       return
@@ -4155,7 +4155,7 @@ class PlayerViewModel(
     decoderPreferences.hdrScreenMode.set(mode)
     decoderPreferences.hdrScreenOutput.set(mode != HdrScreenMode.OFF)
     applyHdrScreenOutput(mode)
-    playerUpdate.value = PlayerUpdates.ShowText("HDR Screen Output: ${mode.shortTitle}")
+    playerUpdate.value = PlayerUpdates.ShowText("HDR 屏幕输出: ${mode.shortTitle}")
   }
 
   private fun isHdrScreenOutputAvailable(mode: HdrScreenMode = _hdrScreenMode.value): Boolean {
@@ -4216,7 +4216,7 @@ class PlayerViewModel(
       return
     }
     if (!hdrToysManager.apply(profile)) {
-      playerUpdate.value = PlayerUpdates.ShowText("HDR Toys shaders unavailable")
+      playerUpdate.value = PlayerUpdates.ShowText("HDR Toys 着色器不可用")
     }
   }
 
@@ -4228,10 +4228,10 @@ class PlayerViewModel(
     if (_isAmbientEnabled.value) {
       lastAmbientScaleX = -1.0 // Force rewrite
       updateAmbientStretch()
-      playerUpdate.value = PlayerUpdates.ShowText("Ambience Mode: ON")
+      playerUpdate.value = PlayerUpdates.ShowText("氛围光模式: 开")
     } else {
       disableAmbientShader()
-      playerUpdate.value = PlayerUpdates.ShowText("Ambience Mode: OFF")
+      playerUpdate.value = PlayerUpdates.ShowText("氛围光模式: 关")
     }
   }
 
@@ -4306,7 +4306,7 @@ class PlayerViewModel(
     playerPreferences.ambientVisualMode.set(mode)
 
     if (_isAmbientEnabled.value) {
-      playerUpdate.value = PlayerUpdates.ShowText("Ambient Style: ${mode.label}")
+      playerUpdate.value = PlayerUpdates.ShowText("氛围光样式: ${mode.label}")
       scheduleAmbientUpdate(75)
     }
   }
@@ -4487,7 +4487,7 @@ class PlayerViewModel(
     ambientPreBatterySaverOpacity = _ambientOpacity.value
     ambientWasOnBattery = true
     applyAmbientProfileFast()
-    playerUpdate.value = PlayerUpdates.ShowText("Ambient: Battery Saver ON")
+    playerUpdate.value = PlayerUpdates.ShowText("氛围光: 省电模式 开")
   }
 
   private fun restoreFromBatterySaver() {
@@ -4503,7 +4503,7 @@ class PlayerViewModel(
       fadeCurve = ambientPreBatterySaverFadeCurve,
       opacity = ambientPreBatterySaverOpacity,
     )
-    playerUpdate.value = PlayerUpdates.ShowText("Ambient: Battery Saver OFF")
+    playerUpdate.value = PlayerUpdates.ShowText("氛围光: 省电模式 关")
   }
 
   fun onBatteryStateChanged(isCharging: Boolean) {

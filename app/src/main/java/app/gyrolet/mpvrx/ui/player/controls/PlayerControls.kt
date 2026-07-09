@@ -718,13 +718,13 @@ fun PlayerControls(
             is PlayerUpdates.RepeatMode -> {
               val mode = (currentPlayerUpdate as PlayerUpdates.RepeatMode).mode
               val text = when (mode) {
-                app.gyrolet.mpvrx.ui.player.RepeatMode.OFF -> "Repeat: Off"
-                app.gyrolet.mpvrx.ui.player.RepeatMode.ONE -> "Repeat: Current file"
+                app.gyrolet.mpvrx.ui.player.RepeatMode.OFF -> "重复播放: 关"
+                app.gyrolet.mpvrx.ui.player.RepeatMode.ONE -> "重复播放: 当前文件"
                 app.gyrolet.mpvrx.ui.player.RepeatMode.ALL -> {
                   if (playlistMode && viewModel.hasPlaylistSupport()) {
-                    "Repeat: All playlist"
+                    "重复播放: 全部播放列表"
                   } else {
-                    "Repeat: Current file"
+                    "重复播放: 当前文件"
                   }
                 }
               }
@@ -735,12 +735,12 @@ fun PlayerControls(
               val enabled = (currentPlayerUpdate as PlayerUpdates.Shuffle).enabled
               val text = if (enabled) {
                 if (playlistMode && viewModel.hasPlaylistSupport()) {
-                  "Shuffle: On"
+                  "随机播放: 开"
                 } else {
-                  "Shuffle: Not available"
+                  "随机播放: 不可用"
                 }
               } else {
-                "Shuffle: Off"
+                "随机播放: 关"
               }
               TextPlayerUpdate(text)
             }

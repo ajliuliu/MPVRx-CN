@@ -56,7 +56,7 @@ fun HdrScreenOutputPanel(
           .padding(top = MaterialTheme.spacing.small),
       ) {
         Text(
-          text = "HDR Output",
+          text = "HDR 输出",
           style = MaterialTheme.typography.titleLarge,
         )
         Spacer(Modifier.weight(1f))

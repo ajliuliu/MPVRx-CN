@@ -331,11 +331,11 @@ class MediaInfoActivity : ComponentActivity() {
   }
 
   enum class InfoTab(val displayName: String) {
-    OVERVIEW("Overview"),
-    VIDEO("Video"),
-    AUDIO("Audio"),
-    SUBTITLES("Subtitles"),
-    CHAPTERS("Chapters")
+    OVERVIEW("概览"),
+    VIDEO("视频"),
+    AUDIO("音频"),
+    SUBTITLES("字幕"),
+    CHAPTERS("章节")
   }
 
   @Composable
@@ -919,6 +919,7 @@ class MediaInfoActivity : ComponentActivity() {
     modifier: Modifier = Modifier
   ) {
     val context = LocalContext.current
+    val translatedLabel = translateMediaInfoKey(label)
     Surface(
       modifier = modifier.clickable {
         SafeClipboard.copyPlainText(context, label, value)
@@ -932,7 +933,7 @@ class MediaInfoActivity : ComponentActivity() {
         modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp)
       ) {
         Text(
-          text = label,
+          text = translatedLabel,
           style = MaterialTheme.typography.labelSmall,
           color = MaterialTheme.colorScheme.onSurfaceVariant,
           maxLines = 1,
@@ -1139,6 +1140,7 @@ class MediaInfoActivity : ComponentActivity() {
   private fun PropertyRow(label: String, value: String) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val translatedLabel = translateMediaInfoKey(label)
 
     Row(
       modifier = Modifier
@@ -1154,7 +1156,7 @@ class MediaInfoActivity : ComponentActivity() {
       verticalAlignment = Alignment.Top,
     ) {
       Text(
-        text = label,
+        text = translatedLabel,
         style = MaterialTheme.typography.bodyMedium,
         fontWeight = FontWeight.SemiBold,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -1172,6 +1174,92 @@ class MediaInfoActivity : ComponentActivity() {
         modifier = Modifier.weight(1.5f),
       )
     }
+  }
+
+  private val mediaInfoKeyMap = mapOf(
+    // General / Container — lowercase keys for case-insensitive matching
+    "complete name" to "完整文件名",
+    "format" to "格式",
+    "format version" to "格式版本",
+    "format_version" to "格式版本",
+    "format/info" to "格式信息",
+    "format profile" to "格式配置文件",
+    "format_profile" to "格式配置文件",
+    "file size" to "文件大小",
+    "duration" to "时长",
+    "overall bit rate" to "总体比特率",
+    "overall bit rate mode" to "总体比特率模式",
+    "frame rate" to "帧率",
+    "frame rate mode" to "帧率模式",
+    "frame rate_nominal" to "标称帧率",
+    "frame rate_minimum" to "最低帧率",
+    "frame rate_maximum" to "最高帧率",
+    "frame rate_original" to "原始帧率",
+    "minimum frame rate" to "最低帧率",
+    "maximum frame rate" to "最高帧率",
+    "original frame rate" to "原始帧率",
+    "title" to "标题",
+    "encoded date" to "编码日期",
+    "tagged date" to "标记日期",
+    "writing application" to "写入程序",
+    "writing library" to "编码库",
+    "encoded_library" to "编码库",
+    "encoded_application" to "写入程序",
+    "writing operating system" to "写入操作系统",
+    "codec id" to "编解码器 ID",
+    "codec id/info" to "编解码器 ID 信息",
+    "codecid" to "编解码器 ID",
+    // Video
+    "id" to "编号",
+    "width" to "宽度",
+    "height" to "高度",
+    "display aspect ratio" to "显示宽高比",
+    "bit rate" to "比特率",
+    "bit depth" to "位深",
+    "bits/(pixel*frame)" to "每像素帧比特数",
+    "color space" to "色彩空间",
+    "chroma subsampling" to "色度子采样",
+    "stream size" to "流大小",
+    "default" to "默认",
+    "forced" to "强制",
+    "hdr format" to "HDR 格式",
+    "hdr_format" to "HDR 格式",
+    "maxcll" to "最大内容亮度",
+    "maxfall" to "最大帧平均亮度",
+    "color range" to "色彩范围",
+    "color primaries" to "色彩原色",
+    "transfer characteristics" to "传输特性",
+    "matrix coefficients" to "矩阵系数",
+    "colour_range" to "色彩范围",
+    "colour_primaries" to "色彩原色",
+    "transfer_characteristics" to "传输特性",
+    "matrix_coefficients" to "矩阵系数",
+    "mastering display color primaries" to "母带显示色彩原色",
+    "mastering display luminance" to "母带显示亮度",
+    "masteringdisplay_colorprimaries" to "母带显示色彩原色",
+    "masteringdisplay_luminance" to "母带显示亮度",
+    "codec configuration box" to "编解码器配置框",
+    "codecconfigurationbox" to "编解码器配置框",
+    // Audio
+    "channel(s)" to "声道数",
+    "channel layout" to "声道布局",
+    "channellayout" to "声道布局",
+    "sampling rate" to "采样率",
+    "compression mode" to "压缩模式",
+    "compression_mode" to "压缩模式",
+    "delay" to "延迟",
+    // Text / Subtitles
+    "muxing mode" to "封装模式",
+    "element count" to "元素数",
+    "count of elements" to "元素数",
+    // Language
+    "language" to "语言",
+  )
+
+  private fun translateMediaInfoKey(key: String): String {
+    val normalized = key.lowercase().trim()
+        .replace("_", " ")
+    return mediaInfoKeyMap[normalized] ?: mediaInfoKeyMap[key.lowercase()] ?: key
   }
 
   private fun parseMediaInfoText(text: String): List<InfoSection> {

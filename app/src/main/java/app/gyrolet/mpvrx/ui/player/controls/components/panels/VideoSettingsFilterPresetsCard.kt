@@ -66,7 +66,7 @@ fun VideoSettingsFilterPresetsCard(modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium),
       ) {
         Icon(Icons.Default.AutoAwesome, null)
-        Text("Filter Presets")
+        Text("滤镜预设")
       }
     },
     colors = panelCardsColors(),

@@ -437,7 +437,7 @@
   <string name="show_splash_ovals_on_double_tap_to_seek">双击跳转时显示涟漪</string>
   <string name="show_time_on_double_tap_to_seek">显示跳转时间</string>
   <string name="player_sheets_frame_navigation_title">逐帧导航</string>
-  <string name="player_sheets_frame_navigation_snapshot_saved" translatable="false">Saved to Pictures/mpvSnaps</string>
+  <string name="player_sheets_frame_navigation_snapshot_saved">已保存至 Pictures/mpvSnaps</string>
   <string name="player_sheets_frame_navigation_include_subtitles">截图中包含字幕</string>
   <string name="player_sheets_zoom_slider_label">视频缩放</string>
   <plurals name="seconds">

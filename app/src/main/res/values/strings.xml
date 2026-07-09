@@ -425,7 +425,7 @@
   <string name="show_splash_ovals_on_double_tap_to_seek">Show ripple when double tap seeking</string>
   <string name="show_time_on_double_tap_to_seek">Show seek time</string>
   <string name="player_sheets_frame_navigation_title">Frame Navigation</string>
-  <string name="player_sheets_frame_navigation_snapshot_saved" translatable="false">Saved to Pictures/mpvSnaps</string>
+  <string name="player_sheets_frame_navigation_snapshot_saved">Saved to Pictures/mpvSnaps</string>
   <string name="player_sheets_frame_navigation_include_subtitles">Include subtitles in snapshot</string>
   <string name="player_sheets_zoom_slider_label">Video Zoom</string>
   <plurals name="seconds">
