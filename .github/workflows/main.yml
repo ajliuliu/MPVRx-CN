@@ -1,0 +1,98 @@
+名称：CI/CD 构建
+
+在：
+  pull_request：
+  workflow_dispatch：
+
+系数性：
+  组：${{ github.workflow }}-${{ github.event.pull_request.number }}
+  正在取消：是
+
+工作：
+  建造者：
+    运行平台：ubuntu-latest
+
+    步骤：
+      -名称：检出仓库
+        使用：actions/checkout@v4
+
+      - name :生成短SHA
+        id：set-short-sha
+        运行：echo "SHORT_SHA=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+
+      -名称：安装JDK 17
+        使用：actions/setup-java@v4
+        和：
+          发放：'采纳'
+          Java版本：17
+          缓存：' gradle '
+
+      - name :使 gradlew 执行
+        运行：chmod +x ./gradlew
+
+      - name :使用 Gradle 构建
+        运行：./gradlew assembleStandardRelease
+
+      -名称：签名APK
+        运行：|
+          设置-e
+          STANDARD_RELEASE_DIR="app/build/outputs/apk/standard/release"
+          
+          如果[ -z "${{secrets.SIGNING_KEYSTORE }}" ]; 则
+            echo "SIGNING_KEYSTORE 密钥不可用。跳过签名步骤。"
+            出口0
+          菲
+          
+          echo "${{ secrets.SIGNING_KEYSTORE }}" | base64 -d > release.keystore
+          
+          查找“$STANDARD_RELEASE_DIR” -name “app-standard-*-release-unsigned.apk” -type f | while read -r apk; do
+            signed_apk="${apk/-unsigned/}"
+          
+            $ANDROID_HOME/build-tools/34.0.0/apksigner 签名 \
+              --ks release.keystore \
+              --ks-key-alias "${{ secrets.SIGNING_KEY_ALIAS }}" \
+              --ks-pass "pass:${{ secrets.SIGNING_STORE_PASSWORD }}" \
+              --key-pass "pass:${{ secrets.KEY_PASSWORD }}" \
+              -- 输出“$signed_apk” \
+              "$apk"
+          
+            $ANDROID_HOME/build-tools/34.0.0/apksigner 验证 "$signed_apk"
+            删除“$apk”
+          完毕
+          
+          删除release.keystore
+          echo "APK签名和验证成功。"
+      -名称：上传 app-arm64-v8a 工件
+        使用：actions/upload-artifact@v4
+        和：
+          名称：app-standard-arm64-v8a-release-${{ env.SHORT_SHA }}
+          路径：app/build/outputs/apk/standard/release/app-standard-arm64-v8a-release*.apk
+          如果未找到文件：警告
+
+      -名称：上传 app-armeabi-v7a 工件
+        使用：actions/upload-artifact@v4
+        和：
+          名称：app-standard-armeabi-v7a-release-${{ env.SHORT_SHA }}
+          路径：app/build/outputs/apk/standard/release/app-standard-armeabi-v7a-release*.apk
+          如果未找到文件：警告
+
+      -名称：上传通用应用工件
+        使用：actions/upload-artifact@v4
+        和：
+          名称：app-standard-universal-release-${{ env.SHORT_SHA }}
+          路径：app/build/outputs/apk/standard/release/app-standard-universal-release*.apk
+          如果未找到文件：警告
+
+      -名称：上传app-x86工件
+        使用：actions/upload-artifact@v4
+        和：
+          名称：app-standard-x86-release-${{ env.SHORT_SHA }}
+          路径：app/build/outputs/apk/standard/release/app-standard-x86-release*.apk
+          如果未找到文件：警告
+
+      -名称：上传app-x86_64工件
+        使用：actions/upload-artifact@v4
+        和：
+          名称：app-standard-x86_64-release-${{ env.SHORT_SHA }}
+          路径：app/build/outputs/apk/standard/release/app-standard-x86_64-release*.apk
+          如果未找到文件：警告
